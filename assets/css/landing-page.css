@@ -1,0 +1,204 @@
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+header.masthead {
+  position: relative;
+  background: #8AAAE5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FBCBFF, #8AAAE5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FBCBFF, #8AAAE5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  background-size: cover;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+header.masthead h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+}
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
+.testimonials {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.testimonials .testimonial-item {
+  max-width: 18rem;
+}
+
+img {
+  -webkit-box-shadow: 0px 5px 5px 0px #adb5bd;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
+}
+
+.no-shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.call-to-action {
+  position: relative;
+  background: #8AAAE5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FBCBFF, #8AAAE5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FBCBFF, #8AAAE5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.call-to-action .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+footer.footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.features-icons-icon i {
+  color: #8AAAE5;
+  opacity: 0.8;
+}
+
+.btn-standard {
+  background-color: #8AAAE5;
+  color: #fff;
+}
+.btn-standard:hover {
+  background-color: #fff;
+  color: #8AAAE5;
+  border-color: #8AAAE5;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+
+.btn-reverse {
+  background-color: #fff;
+  color: #8AAAE5;
+}
+.btn-reverse:hover {
+  background-color: transparent;
+  color: #fff;
+  border-color: #FBCBFF;
+  opacity: 0.8;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+
+.section-title::after {
+  content: "·";
+  padding-left: 4px;
+  color: #FBCBFF;
+  font-size: 2rem;
+}
+
+.social-icon-link {
+  color: #8AAAE5;
+}
+
+.social-icon-link:hover {
+  color: #8AAAE5;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+}
+
+a {
+  color: #8AAAE5;
+}
+a:hover {
+  color: #8AAAE5;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+}
+
+@media (min-width: 768px) {
+  .m-top {
+    margin-top: 40px;
+  }
+}
+
+.small-line {
+  width: 100px;
+  background-color: #FBCBFF;
+}

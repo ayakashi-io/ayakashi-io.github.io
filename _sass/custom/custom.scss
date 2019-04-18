@@ -1,0 +1,25 @@
+.navigation-list-item .navigation-list-child-list {
+    display: block;
+}
+
+.core-action {
+    margin-bottom: 20px;
+    border: 2px solid #f5f6fa;;
+    border-left: 5px solid #f5f6fa;;
+    font-size: 14px;
+    transition: background-color .2s ease-out,border .2s ease-out;
+}
+
+// .core-action:hover {
+//     border-color: #666;
+//     border-left-color: #666;
+// }
+
+.core-action > h2, .core-action > figure, .core-action > p, .core-action > div  {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.core-action > figure > pre {
+    overflow: hidden;
+}

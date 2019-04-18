@@ -1,0 +1,488 @@
+[
+    {
+        "name": "check",
+        "description": [
+            {
+                "text": "Checks a checkbox prop if it is not already checked.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myCheckboxProp\").where({id: {eq: \"myCheckbox\"}});\nawait ayakashi.check(\"myCheckboxProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "clearInput",
+        "description": [
+            {
+                "text": "Clears the text in a prop by pressing Backspace until the value is cleared.",
+                "type": "text"
+            },
+            {
+                "text": "A character count can be specified to only clear part of the text.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myInput\").where({id: {eq: \"name\"}});\nawait ayakashi.clearInput(\"myInput\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, charCount?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "click",
+        "description": [
+            {
+                "text": "Clicks on a prop",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.click(\"myButtonProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "doubleClick",
+        "description": [
+            {
+                "text": "Double-clicks on a prop",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.doubleClick(\"myButtonProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "focus",
+        "description": [
+            {
+                "text": "Focuses on a prop",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myInput\").where({id: {eq: \"email\"}});\nawait ayakashi.focus(\"myInput\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "getNodeId",
+        "description": [
+            {
+                "text": "Returns the DOM nodeId of a prop. Mostly for internal use or to implement other actions.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myButton\").where({class: {eq: \"btn\"}});\nawait ayakashi.getNodeId(\"myButton\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<number>"
+    },
+    {
+        "name": "getPosition",
+        "description": [
+            {
+                "text": "Returns the x and y coordinates of a prop.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myButton\").where({class: {eq: \"btn\"}});\nawait ayakashi.getPosition(\"myButton\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<{}>"
+    },
+    {
+        "name": "goTo",
+        "description": [
+            {
+                "text": "Navigates to a new page and waits for the document to load.",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) for slow pages (default 10s).",
+                "type": "text"
+            },
+            {
+                "text": "Use a timeout of 0 to disable the timeout.",
+                "type": "text"
+            },
+            {
+                "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#standard-navigation\">https://ayakashi.io/docs/going_deeper/page-navigation.html#standard-navigation</a>",
+                "type": "text"
+            },
+            {
+                "text": "await ayakashi.goTo(\"https://ayakashi.io\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(url: string, timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "hover",
+        "description": [
+            {
+                "text": "Hovers over a prop.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"moreInfo\").where({id: {eq: \"info\"}});\nawait ayakashi.hover(\"moreInfo\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "infiniteScrollIn",
+        "description": [
+            {
+                "text": "Infinitely scrolls inside a scrollable prop.",
+                "type": "text"
+            },
+            {
+                "text": "Works with props that load more content and expand dynamically as they are being scrolled.",
+                "type": "text"
+            },
+            {
+                "text": "A callback can be triggered on each scrolling interval to extract data as we scroll.",
+                "type": "text"
+            },
+            {
+                "text": "The scrolling interval can be controlled with the interval option (default 1s).",
+                "type": "text"
+            },
+            {
+                "text": "The pixels to scroll each time can be controlled with the pixelsToScroll option.",
+                "type": "text"
+            },
+            {
+                "text": "If no pixelsToScroll is provided it will scroll to the (current) bottom of the prop.",
+                "type": "text"
+            },
+            {
+                "text": "The scrolling can be stopped with the stopScrollingAfter option (in ms) or if the final bottom is reached and no more content is available.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myInfiniteScrollableDiv\").where({class: {eq: \"scrollableList\"}});\nawait ayakashi.infiniteScrollIn(\"myInfiniteScrollableDiv\", {\ncb: function(currentHeight) {\nconsole.log(\"scrolling infinitely\");\nconsole.log(\"current height\", currentHeight);\n//let data flow in as we scroll\n}\n});\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, options?: undefined | undefined) => Promise<void>"
+    },
+    {
+        "name": "navigationClick",
+        "description": [
+            {
+                "text": "Clicks on a prop to navigate to a new page.",
+                "type": "text"
+            },
+            {
+                "text": "It should be used instead of click() so the new page can properly load.",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) for slow pages (default 10s).",
+                "type": "text"
+            },
+            {
+                "text": "Use a timeout of 0 to disable the timeout.",
+                "type": "text"
+            },
+            {
+                "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#click-to-navigate\">https://ayakashi.io/docs/going_deeper/page-navigation.html#click-to-navigate</a>",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi\n.select(\"myLink\")\n.where({id: {eq: \"theLink\"}});\nawait ayakashi.navigationClick(\"myLink\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "rightClick",
+        "description": [
+            {
+                "text": "Right-clicks on a prop",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"menuOpener\").where({class: {eq: \"menu-trigger\"}});\nawait ayakashi.rightClick(\"menuOpener\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "scrollIn",
+        "description": [
+            {
+                "text": "Scrolls inside a scrollable prop by an amount of pixels.",
+                "type": "text"
+            },
+            {
+                "text": "If no pixels are specified it will scroll to the bottom of the prop.",
+                "type": "text"
+            },
+            {
+                "text": "Works for props with a static height.",
+                "type": "text"
+            },
+            {
+                "text": "Check the scrollInUntilBottomIsReached() and infiniteScrollIn() actions If the prop loads more content and expands dynamically as it is being scrolled.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myScrollableDiv\").where({class: {eq: \"scrollableList\"}});\nawait ayakashi.scrollIn(\"myScrollableDiv\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, pixelsToScroll?: undefined | number) => Promise<number>"
+    },
+    {
+        "name": "scrollInUntilBottomIsReached",
+        "description": [
+            {
+                "text": "Scrolls inside a scrollable prop until its bottom is reached.",
+                "type": "text"
+            },
+            {
+                "text": "Works with props that load more content and expand dynamically as they are being scrolled.",
+                "type": "text"
+            },
+            {
+                "text": "The scrolling interval can be controlled with the interval parameter.",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) to throw an error if the time is exceeded (default 10s) and the bottom is still not reached.",
+                "type": "text"
+            },
+            {
+                "text": "Use a timeout of 0 to disable the timeout.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myDynamicScrollableDiv\").where({class: {eq: \"scrollableList\"}});\nawait ayakashi.scrollInUntilBottomIsReached(\"myDynamicScrollableDiv\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, scrollInterval?: undefined | number, timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "scrollIntoView",
+        "description": [
+            {
+                "text": "Scrolls a prop into view.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.scrollIntoView(\"myButtonProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "spaNavigationClick",
+        "description": [
+            {
+                "text": "Clicks on a prop that changes the view in a dynamic page or single page application.",
+                "type": "text"
+            },
+            {
+                "text": "It should be used instead of click() so the view can properly load.",
+                "type": "text"
+            },
+            {
+                "text": "It will not reload the page like navigationClick().",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) for slow pages (default 10s).",
+                "type": "text"
+            },
+            {
+                "text": "Use a timeout of 0 to disable the timeout.",
+                "type": "text"
+            },
+            {
+                "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#single-page-application-spa-navigation\">https://ayakashi.io/docs/going_deeper/page-navigation.html#single-page-application-spa-navigation</a>",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi\n.select(\"inPageLink\")\n.where({id: {eq: \"theLink\"}});\nawait ayakashi.spaNavigationClick(\"inPageLink\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "tap",
+        "description": [
+            {
+                "text": "Taps on a prop. Same as click() but dispatches touch events instead of mouse events.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.tap(\"myButtonProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "typeIn",
+        "description": [
+            {
+                "text": "Types text in a prop by pressing each character one by one with a delay.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"searchBox\").where({id: {eq: \"search\"}});\nawait ayakashi.typeIn(\"searchBox\", \"web scraping and sanity\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, text: string) => Promise<void>"
+    },
+    {
+        "name": "uncheck",
+        "description": [
+            {
+                "text": "Unchecks a checkbox prop if it is already checked.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi.selectOne(\"myCheckboxProp\").where({id: {eq: \"myCheckbox\"}});\nawait ayakashi.uncheck(\"myCheckboxProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string) => Promise<void>"
+    },
+    {
+        "name": "wait",
+        "description": [
+            {
+                "text": "Waits for a specified amount of ms.",
+                "type": "text"
+            },
+            {
+                "text": "await ayakashi.wait(3000);\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "waitForInPageNavigation",
+        "description": [
+            {
+                "text": "Waits for an in-page navigation to occur in a dynamic page or single page application.",
+                "type": "text"
+            },
+            {
+                "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events\">https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events</a>",
+                "type": "text"
+            },
+            {
+                "text": "await ayakashi.wait(3000);\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "waitForLoadEvent",
+        "description": [
+            {
+                "text": "Waits for the load event of a new page.",
+                "type": "text"
+            },
+            {
+                "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events\">https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events</a>",
+                "type": "text"
+            },
+            {
+                "text": "await ayakashi.wait(3000);\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "waitUntil",
+        "description": [
+            {
+                "text": "Waits by executing the callback until it returns a truthy value in a set interval.",
+                "type": "text"
+            },
+            {
+                "text": "The interval parameter can configure the callback execution interval (default 100ms).",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) to throw an error if the time is exceeded (default 10s).",
+                "type": "text"
+            },
+            {
+                "text": "await ayakashi.waitUntil(function() {\nreturn ayakashi.evaluate(function() {\n//check for something in the page\n});\n});\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(cb, interval?: undefined | number, timeout?: undefined | number) => Promise"
+    },
+    {
+        "name": "waitUntilExists",
+        "description": [
+            {
+                "text": "Waits until a prop exists on the page by re-evaluating its query until it finds a match.",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) to throw an error if the time is exceeded (default 10s).",
+                "type": "text"
+            },
+            {
+                "text": "Use a timeout of 0 to disable the timeout.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi\n.select(\"myProp\")\n.where({class: {eq: \"dynamicContainer\"}});\nawait ayakashi.waitUntilExists(\"myProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+    },
+    {
+        "name": "waitUntilVisible",
+        "description": [
+            {
+                "text": "Waits until a prop exists on the page and is also visible.",
+                "type": "text"
+            },
+            {
+                "text": "A timeout can be specified (in ms) to throw an error if the time is exceeded (default 10s).",
+                "type": "text"
+            },
+            {
+                "text": "Use a timeout of 0 to disable the timeout.",
+                "type": "text"
+            },
+            {
+                "text": "ayakashi\n.select(\"myProp\")\n.where({class: {eq: \"dynamicContainer\"}});\nawait ayakashi.waitUntilVisible(\"myProp\");\n",
+                "type": "code"
+            }
+        ],
+        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+    }
+]
