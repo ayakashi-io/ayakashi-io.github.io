@@ -25,7 +25,7 @@ with navigation in normal and single page application (SPA) pages.
 
 ## Standard navigation
 
-To navigate to a page and wait until it is fully loaded, use `goTo()`
+To navigate to a page and wait until the `DOMContentLoaded` has been fired, use `goTo()`
 
 ```js
 await ayakashi.goTo("https://ayakashi.io");
@@ -52,7 +52,7 @@ await ayakashi.navigationClick("myLink");
 ```
 
 `navigationClick()` needs a [prop](/docs/guide/tour.html#props) to click.  
-It will click the prop and then wait for the new page to fully load.  
+It will click the prop and then wait for the `DOMContentLoaded` event of the new page to fire.  
 There is an optional timeout you can specify (in ms) as a second parameter (default is 10s).  
 You may use a timeout of `0` to disable the timeout.
 
@@ -80,8 +80,10 @@ to scrape is using a different navigation scenario.
 For these cases we can wait for the navigation events directly
 
 ```js
-//for standard navigation
+//for standard navigation (load event)
 await ayakashi.waitForLoadEvent();
+//for standard navigation (DOMContentLoaded event)
+await ayakashi.waitForDomContentLoadedEvent();
 //for spa navigation
 await ayakashi.waitForInPageNavigation();
 ```
