@@ -384,6 +384,20 @@
         "signature": "(timeout?: undefined | number) => Promise<void>"
     },
     {
+        "name": "waitForDomContentLoadedEvent",
+        "description": [
+            {
+                "text": "Waits for the domContentLoaded event of a new page.",
+                "type": "text"
+            },
+            {
+                "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events\">https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events</a>",
+                "type": "text"
+            }
+        ],
+        "signature": "(timeout?: undefined | number) => Promise<void>"
+    },
+    {
         "name": "waitForInPageNavigation",
         "description": [
             {
@@ -393,10 +407,6 @@
             {
                 "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events\">https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events</a>",
                 "type": "text"
-            },
-            {
-                "text": "await ayakashi.wait(3000);\n",
-                "type": "code"
             }
         ],
         "signature": "(timeout?: undefined | number) => Promise<void>"
@@ -411,10 +421,6 @@
             {
                 "text": "Learn more at <a href=\"https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events\">https://ayakashi.io/docs/going_deeper/page-navigation.html#using-the-raw-events</a>",
                 "type": "text"
-            },
-            {
-                "text": "await ayakashi.wait(3000);\n",
-                "type": "code"
             }
         ],
         "signature": "(timeout?: undefined | number) => Promise<void>"
