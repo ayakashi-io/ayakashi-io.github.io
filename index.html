@@ -56,6 +56,7 @@
                 <a href="https://github.com/ayakashi-io/ayakashi" class="social-icon-link" target="_blank">
                     <i class="fab fa-github fa-2x fa-fw" style="vertical-align: middle;"></i>
                 </a>
+                <i class="fas fa-bell fa-2x fa-fw" style="vertical-align: middle;" data-toggle-changecast="true"></i>
             </div>
         </div>
     </nav>
@@ -266,6 +267,9 @@
                         <li class="list-inline-item">
                             <a href="https://github.com/ayakashi-io/ayakashi/milestones" target="_blank">Roadmap</a>
                         </li>
+                        <li class="list-inline-item">
+                            <a href="https://changelog.ayakashi.io" target="_blank">Changelog</a>
+                        </li>
                         <!-- <li class="list-inline-item">&sdot;</li>
                         <li class="list-inline-item">
                             <a href="#">Contact</a>
@@ -303,6 +307,19 @@
     <!-- Bootstrap core JavaScript -->
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://changelog.ayakashi.io/widget.js" defer="true"></script>
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                const iframes = document.getElementsByTagName("iframe");
+                Array.prototype.forEach.call(iframes, function(iframe) {
+                    if (iframe.src === "https://changelog.ayakashi.io/widget") {
+                        iframe.style.paddingTop = document.querySelector("body > nav").offsetHeight + "px";
+                    }
+                });
+            }, 5000);
+        })
+    </script>
 </body>
 
 </html>

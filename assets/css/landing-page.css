@@ -202,3 +202,8 @@ a:hover {
   width: 100px;
   background-color: #FBCBFF;
 }
+
+.fa-bell {
+  color: #8AAAE5;
+  cursor: pointer;
+}
