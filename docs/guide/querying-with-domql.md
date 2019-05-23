@@ -404,7 +404,7 @@ ayakashi
     .select()
     .where({
         "style-background-color": {
-            eq: "rgb(40, 167, 69)"
+            eq: "#8AAAE5"
         }
     })
 ```
@@ -417,6 +417,4 @@ so that means external, inline or styles in a `<style>`
 element can be matched.  
 **Note 1**: Make sure to use the full name of the css property, so instead of
 `font`, use `font-size` and instead of `border` or `border-width`,
-use `border-bottom-width` etc.  
-**Note 2**: For color properties, like `background-color`, the value must be specified
-in rgb. Using hex will not work.
+use `border-bottom-width` etc.
