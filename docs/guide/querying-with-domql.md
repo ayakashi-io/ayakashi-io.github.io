@@ -137,7 +137,18 @@ ayakashi
     })
 ```
 
-`like` will match if the specified attribute **contains** the value on the right.
+`like` will match if the specified attribute **contains** (or **matches** if using a regex) the value on the right.  
+Instead of a string, a regex can also be used:
+
+```js
+ayakashi
+    .select()
+    .where({
+        href: {
+            like: /github/
+        }
+    })
+```
 
 ### nlike
 
@@ -152,7 +163,18 @@ ayakashi
 ```
 
 The reverse of `like`.  
-The specified attribute on the left **must not** contain the value on the right.
+The specified attribute on the left **must not** contain (or not match if using a regex) the value on the right.  
+Instead of a string, a regex can also be used:
+
+```js
+ayakashi
+    .select()
+    .where({
+        href: {
+            nlike: /github/
+        }
+    })
+```
 
 ### $nlike (strict)
 
@@ -167,12 +189,12 @@ ayakashi
 ```
 
 The strict version of `nlike`.  
-The difference is that the specified attribute **must exist** but not contain
+The difference is that the specified attribute **must exist** but not contain (or not match if using a regex)
 the value on the right.  
 In the above example, the query will match all elements that have a `href`
 but it does not contain `github.com`.  
 The non-strict version would have also matched any element that doesn't have a `href`
-at all.
+at all.  
 
 ### in
 
@@ -415,6 +437,6 @@ css property and you can match it like any other attribute.
 The query will search the actual evaluated css properties of the element,
 so that means external, inline or styles in a `<style>`
 element can be matched.  
-**Note 1**: Make sure to use the full name of the css property, so instead of
+**Note**: Make sure to use the full name of the css property, so instead of
 `font`, use `font-size` and instead of `border` or `border-width`,
 use `border-bottom-width` etc.
