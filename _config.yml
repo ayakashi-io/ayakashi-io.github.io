@@ -45,6 +45,8 @@ exclude:
   - vendor/ruby/
   - LICENSE
   - README.md
+include:
+  - _redirects
 
 github:
   source:
