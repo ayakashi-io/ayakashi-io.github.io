@@ -23,3 +23,60 @@
 .core-action > figure > pre {
     overflow: hidden;
 }
+
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border-bottom: 1px solid #eeebee;
+}
+
+.bottom-bar {
+    position: fixed;
+    top: auto;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 50px;
+    line-height: 1.4;
+    color: #5c5962;
+    border-top: 1px solid #eeebee;
+    border-bottom: none;
+}
+.bottom-bar > .main-content {
+    justify-content: flex-start;
+}
+.main-content-wrap > .main-content {
+    margin-bottom: 60px;
+}
+@media (max-width: 46.25rem) {
+    .bottom-bar {
+        display: none;
+    }
+}
+
+.navigation {
+    padding-top: 0;
+    padding-bottom: 80px;
+}
+
+// .side-bar {
+//     width: 248px;
+//     min-width: 248px;
+// }
+
+// @media (min-width: 46.25rem) {
+//     .side-bar {
+//         width: 248px;
+//     }
+// }
+
+h2::before, h3::before  { 
+    display: block; 
+    content: " "; 
+    margin-top: -80px; 
+    height: 80px; 
+    visibility: hidden; 
+    pointer-events: none;
+}

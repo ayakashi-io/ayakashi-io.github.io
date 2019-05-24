@@ -27,6 +27,7 @@ markdown: kramdown
 theme: just-the-docs
 plugins:
   - jekyll-sitemap
+  - "jekyll-github-metadata"
 # Enable or disable the site search
 search_enabled: true
 ga_tracking: UA-15935695-10
@@ -44,3 +45,7 @@ exclude:
   - vendor/ruby/
   - LICENSE
   - README.md
+
+github:
+  source:
+    branch: master
