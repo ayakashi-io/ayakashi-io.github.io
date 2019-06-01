@@ -13,7 +13,7 @@ it's pretty simple and quick.
 
 ## How to read the guide
 
-You can start by reading the [guide](/docs/guide/) from top to bottom.  
+You can start by reading the [guide](/docs/guide) from top to bottom.  
 It will start by explaining the core concepts and build upon them
 as it moves along.  
 By the end of it you will be able to build some pretty impressive systems.
@@ -25,6 +25,6 @@ more detail and introduce more features that will certainly come in handy.
 
 ## Going meta
 
-The [advanced](/docs/advanced/) section will demonstrate how to extend
+The [advanced](/docs/advanced) section will demonstrate how to extend
 the framework by creating your own actions, extractors and preloaders.  
 Give it a quick read even if you don't need the extra power right now.
