@@ -22,6 +22,8 @@ Can be also viewed in your console by running `ayakashi --help` or by appending 
   * Examples
 * get-chrome
   * Examples
+* info
+  * Examples
 {:toc}
 
 ## run
@@ -91,26 +93,27 @@ ayakashi new --preloader
 
 Updates/Downloads the latest chromium revision.
 
-| Option | Description | Default |
-| --- | --- |
-| `dir` | The root directory of the project. | `.` (current directory)
-
 ### Examples
 
 ```bash
-ayakashi update-chrome ./myProject
+ayakashi update-chrome
 ```
 
 ## get-chrome
 
 Downloads the latest chromium revision if one is not already installed.
 
-| Option | Description | Default |
-| --- | --- |
-| `dir` | The root directory of the project. | `.` (current directory)
+### Examples
+
+```bash
+ayakashi get-chrome
+```
+## info
+
+Show the installed Ayakashi version and chromium revision.
 
 ### Examples
 
 ```bash
-ayakashi get-chrome ./myProject
+ayakashi info
 ```

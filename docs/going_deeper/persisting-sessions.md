@@ -20,6 +20,3 @@ module.exports = {
     //... the rest of the file
 }
 ```
-
-This will create a `.session` folder inside your project's folder with the session's data.  
-You can just delete it if you need to refresh the session.

@@ -96,8 +96,7 @@ Extracting data is also fully covered in the [data extraction section](/docs/gui
 ayakashi run --simple ./github.js
 ```
 
-The `run` command will download the latest chromium the first time it is run and place it in a
-`.chromium` directory next to our scrapper file.  
+The `run` command will download a recommended chromium version the first time it is run.  
 It will then start outputting some info about its progress and finally print a table on our console
 with the extracted data.
 
