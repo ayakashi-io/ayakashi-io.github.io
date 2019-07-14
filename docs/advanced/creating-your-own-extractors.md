@@ -94,10 +94,11 @@ This time we will replace the generated example content with:
  */
 module.exports = function(ayakashi) {
     ayakashi.registerExtractor("email", function() {
+        const self = this;
         return {
             extract: function(element) {
                 //let's use the text extractor
-                const textExtractor = ayakashi.extractors.text();
+                const textExtractor = self.extractors.text();
                 const textResult = textExtractor.extract(element);
                 //if no text was found at all, return null
                 if (!textExtractor.isValid(textResult)) {

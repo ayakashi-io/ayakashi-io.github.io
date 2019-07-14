@@ -62,7 +62,7 @@ ayakashi run --simple ./myProject/myScrapper.js --out=json
 
 ## new
 
-Generates a new `project|scrapper|script|prop|action|extractor|preloader`.
+Generates a new `project|scrapper|renderlessScrapper|apiScrapper|script|prop|action|extractor|preloader`.
 
 | Option | Description | Default |
 | --- | --- |
@@ -80,6 +80,10 @@ ayakashi new ./existingFolder
 
 ```bash
 ayakashi new --extractor --name=myExtractor
+```
+
+```bash
+ayakashi new --renderlessScrapper --name=myScrapper
 ```
 
 If `--name` is omitted, an interactive prompt will be shown to enter the name:

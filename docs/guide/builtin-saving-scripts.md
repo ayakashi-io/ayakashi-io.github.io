@@ -47,8 +47,8 @@ const data3 = ayakashi.extract("myProp3", "text");
 return {data1, data2, data3}
 ```
 
-When saving multiple extracted props in an object and these props contain multiple matches, the data will be normalized
-into proper rows.
+When wrapping multiple extracted props in an object and these props contain multiple matches, the data will be grouped correctly
+and normalized into proper rows.
 
 ## printToConsole
 
