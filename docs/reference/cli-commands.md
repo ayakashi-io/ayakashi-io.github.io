@@ -39,6 +39,7 @@ Runs a project.
 | Option | Description | Default |
 | --- | --- |
 | `--configFile` or `-c` | Use an alternative configFile | `ayakashi.config.js`
+| `--jsonConfig` or `-jc` | Use a json string as config |
 | `--simple` | Run a single scrapper | `false`
 | `--out` | Select the saving format when `--simple` mode is used. Available formats: `sqlite`, `csv`, `json`, `stdout` | `stdout`
 
@@ -58,6 +59,14 @@ ayakashi run --configFile=otherConfig.js ./myProject
 
 ```bash
 ayakashi run --simple ./myProject/myScrapper.js --out=json
+```
+
+```bash
+ayakashi run --configFile alternative_config.js
+```
+
+```bash
+ayakashi run --jsonConfig '{"config":{},"waterfall":[{"type":"apiScrapper","module":"myScrapper"}]}'
 ```
 
 ## new
