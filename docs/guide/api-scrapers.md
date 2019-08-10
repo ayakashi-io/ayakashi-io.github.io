@@ -22,6 +22,7 @@ with extra features sprinkled on top so you can plug them on your Ayakashi pipel
 * Generating and running an API scraper
 * What's available in an API scraper
 * Request options
+* The request API is available on all scraper types
 {:toc}
 
 ## Generating and running an API scraper
@@ -84,3 +85,10 @@ Under the hood, API scrapers use a modified version of the popular [request.js](
 Feel free to use any of its [options](https://github.com/request/request#requestoptions-callback) that fit your usecase
 but bear in mind that many options are already pre-configured.  
 The configuration object should be mostly used to pass request data like querystrings, json payloads etc.
+
+## The request API is available on all scraper types
+
+All scraper types (`renderlessScraper`/`scraper`) have access to the request API to make them flexible on
+scenarios that require both an API call and some form of DOM manipulation.  
+If you only need to make API requests, an `apiScraper` is recommended since it's more lightweight and
+makes the code more explicit.
