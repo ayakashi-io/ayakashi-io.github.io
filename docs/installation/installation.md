@@ -6,7 +6,20 @@ has_children: false
 permalink: /docs/installation
 ---
 
+<!-- markdownlint-disable MD022 -->
 # Installation
+{: .no_toc }
+<!-- markdownlint-enable MD022 -->
+
+* Installing
+* Updating
+* Using a @next version
+* Installing missing Chromium dependencies on a Linux server
+  * Option 1 - Install the missing dependencies
+  * Option 2 - Install Chromium from your package manager
+{:toc}
+
+## Installing
 
 Ayakashi runs on [Node.js](https://nodejs.org/).  
 If you don't have node installed in your system please go ahead and install it first.  
@@ -29,6 +42,19 @@ To update Ayakashi to the latest version, run:
 ```bash
 npm update -g ayakashi
 ```
+
+## Using a @next version
+
+The [master branch](https://github.com/ayakashi-io/ayakashi/tree/master) is published at regular intervals as a `@next` npm tag.  
+You may install the `@next` version with:
+
+```bash
+npm install -g ayakashi@next
+```
+
+Beware that `@next` releases might be completely broken. Only use them if you need to test things out or need
+a feature/fix not yet available on `@latest`.  
+To see what changed since the last release, take a look at the [commit history](https://github.com/ayakashi-io/ayakashi/commits/master).
 
 ## Installing missing Chromium dependencies on a Linux server
 
