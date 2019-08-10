@@ -21,6 +21,7 @@ If you haven't read it already, take a minute to check the short [tour](/docs/gu
 * Operators
 * Limit, skip and order
 * Child queries
+  * Tracking missing children
 * Querying element attributes
 * Querying data attributes
 * Querying with style
@@ -372,6 +373,62 @@ Like the normal `select()`, convenience methods also exist for child selects
 
 You can nest child queries indefinitely, using either `from()`
 or the convenience methods.
+
+### Tracking missing children
+
+When scraping a collection of elements there might be some child elements that might not exist.  
+
+Imagine we need to extract the links from the following html:
+
+```html
+<div class="container"><a href="http://example.com">link1</a></div>
+<div class="container">I don't have a link</div>
+<div class="container"><a href="http://example2.com">link2</a></div>
+```
+
+Our query:
+
+```js
+ayakashi
+    .select("parentProp")
+    .where({
+        class: {
+            eq: "container"
+        }
+    })
+    .selectChild("childProp")
+        .where({
+            tagName: {
+                eq: "a"
+            }
+        });
+```
+
+If we extract the `childProp`, we will get a result like this: `[{childProp: "link1"}, {childProp: "link2"}]`.  
+If we were also extracting more child props from each container this would have messed our ordering
+and the final extraction result would be incorrect.  
+In such a case we can use the `trackMissingChildren()` method like this:
+
+```js
+ayakashi
+    .select("parentProp")
+    .where({
+        class: {
+            eq: "container"
+        }
+    })
+    .trackMissingChildren() // <-- applied on the parent prop
+    .selectChild("childProp")
+        .where({
+            tagName: {
+                eq: "A"
+            }
+        });
+```
+
+Now, our result will be: `[{childProp: "link1"}, {childProp: ""}, {childProp: "link2"}]`.  
+`trackMissingChildren()` will add a child match placeholder if a child does not exist in a collection of parents.  
+This will ensure proper ordering when extracting children that might sometimes not exist.
 
 ## Querying element attributes
 
