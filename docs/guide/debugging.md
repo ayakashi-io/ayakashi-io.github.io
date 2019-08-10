@@ -7,7 +7,7 @@ nav_order: 6
 
 # Debugging
 
-Ayakashi includes some utilities to help you debug your scrappers while developing.
+Ayakashi includes some utilities to help you debug your scrapers while developing.
 
 ## Using a headful chrome
 
@@ -37,18 +37,18 @@ module.exports = {
 
 ## Pausing execution
 
-Inside a **scrapper file** you can add:
+Inside a **scraper file** you can add:
 
 ```js
 await ayakashi.pause();
 ```
 
-to pause the execution of the scrapper at that point.  
-To resume it, you should be running the scrapper in **non-headless** mode.  
-Go to the tab that the scrapper you paused is managing and in the **devTools' console** run:
+to pause the execution of the scraper at that point.  
+To resume it, you should be running the scraper in **non-headless** mode.  
+Go to the tab that the scraper you paused is managing and in the **devTools' console** run:
 
 ```js
 ayakashi.resume();
 ```
 
-**Note**: the `pause` method is only available inside scrappers.
+**Note**: the `pause` method is only available inside scrapers.

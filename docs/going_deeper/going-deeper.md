@@ -7,4 +7,4 @@ permalink: /docs/going-deeper
 ---
 
 In this section we will explore certain things in more detail while introducing more features
-to get your scrappers to the next level.
+to get your scrapers to the next level.

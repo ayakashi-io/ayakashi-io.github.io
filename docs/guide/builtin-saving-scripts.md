@@ -60,8 +60,8 @@ outputs the data you want to print:
 ```js
 {
     waterfall: [{
-        type: "scrapper",
-        module: "myScrapper"
+        type: "scraper",
+        module: "myScraper"
     }, {
         type: "script",
         module: "printToConsole"
@@ -76,8 +76,8 @@ The `saveToJSON` will persist the data in a json file in a performant way
 ```js
 {
     waterfall: [{
-        type: "scrapper",
-        module: "myScrapper"
+        type: "scraper",
+        module: "myScraper"
     }, {
         type: "script",
         module: "saveToJSON",
@@ -99,8 +99,8 @@ file in a performant way
 ```js
 {
     waterfall: [{
-        type: "scrapper",
-        module: "myScrapper"
+        type: "scraper",
+        module: "myScraper"
     }, {
         type: "script",
         module: "saveToCSV",
@@ -121,8 +121,8 @@ The `saveToSQL` script allows saving data to all of the major SQL engines in a t
 ```js
 {
     waterfall: [{
-        type: "scrapper",
-        module: "myScrapper"
+        type: "scraper",
+        module: "myScraper"
     }, {
         type: "script",
         module: "saveToSQL",

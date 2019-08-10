@@ -23,4 +23,4 @@ We can then use the new `mainSection` prop like any other prop.
 
 **Note**: It's good practice to not reference `window` or `document` directly
 but instead get access to them through `this`.  
-That way the props can be re-used by any kind of scrapper without depending on the environment.
+That way the props can be re-used by any kind of scraper without depending on the environment.

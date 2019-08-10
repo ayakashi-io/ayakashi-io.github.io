@@ -1,2 +1,5 @@
 /docs              /docs/getting_started
 /docs/introduction /docs/getting_started
+/docs/guide/running-a-simple-scrapper.html /docs/guide/running-a-simple-scraper.html
+/docs/guide/renderless-scrappers.html /docs/guide/renderless-scrapers.html
+/docs/guide/api-scrappers.html /docs/guide/api-scrapers.html

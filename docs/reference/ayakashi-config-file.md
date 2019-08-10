@@ -30,8 +30,8 @@ Options for the top-level `config` object.
 | Option | Type | Description |
 | --- | --- |
 | `headless` | boolean | Setting it to `false` will disable headless mode. |
-| `userAgent` | string | Configures the userAgent for all scrappers. By default a random userAgent is used. Valid values are `desktop`, `mobile`, `random`. |
-| `proxyUrl` | string | Sets a proxy url for all scrappers. |
+| `userAgent` | string | Configures the userAgent for all scrapers. By default a random userAgent is used. Valid values are `desktop`, `mobile`, `random`. |
+| `proxyUrl` | string | Sets a proxy url for all scrapers. |
 | `openDevTools` | boolean | Automatically open devTools for every tab. `headless` must be `false` for it to have any effect. |
 | `persistentSession` | boolean | Persists the session data of all pages instead of using a temporary session each time. Learn more [here](/docs/going_deeper/persisting-sessions.html) |
 | `windowWidth` | number | Sets the width of the browser window. Default is `1920`. |
@@ -47,11 +47,11 @@ The configuration options used for steps inside `parallel` or `waterfall`.
 
 | Option | Type | Description |
 | --- | --- |
-| `type` | string | The type of the step. Valid values are `scrapper` or `script`. |
+| `type` | string | The type of the step. Valid values are `scraper` or `script`. |
 | `module` | string | The name of the module. |
 | `params` | object | A custom parameters object to pass to the module. |
 | `config` | object | Extra configuration for the step. See below |
-| `load` | object | Specify external modules that should be loaded by the scrapper. See below |
+| `load` | object | Specify external modules that should be loaded by the scraper. See below |
 
 ### Extra step configuration
 
@@ -62,7 +62,7 @@ Options for a step's `config` object.
 | `pipeConsole` | boolean | Set it to `false` to disable the page console logs from getting printed. |
 | `pipeExceptions` | boolean | Set it to `false` to disable any page uncaught exceptions from getting printed. |
 | `localAutoLoad` | boolean | Set it to `false` to disable automatic loading of local `actions`, `extractors`, `preloaders` and `props` |
-| `emulatorOptions` | object | Emulation options for the scrapper to use. You can emulate the available `width` and `height` of the "device". Set `mobile` to `true` to emulate a mobile device. |
+| `emulatorOptions` | object | Emulation options for the scraper to use. You can emulate the available `width` and `height` of the "device". Set `mobile` to `true` to emulate a mobile device. |
 
 ### Step loading options
 

@@ -80,5 +80,5 @@ If you keep using an `evaluate()`, consider wrapping it in a [custom action](/do
 `evaluate()` works great for small functions but if you find yourself evaluating large functions
 consider creating a library and load it as a preloader.  
 This will help diminish the serialization and transferring cost (since it will only happen once) and also improve the readability
-of your scrapper.  
+of your scraper.  
 You can learn how [here](/docs/advanced/creating-your-own-preloaders.html).

@@ -1,21 +1,21 @@
 ---
 layout: default
-title: Running a simple scrapper
+title: Running a simple scraper
 parent: Guide
 nav_order: 1
 ---
 
-# Running a simple scrapper
+# Running a simple scraper
 
 This is the very first section where we can start getting our feet wet by looking
 at and running some code.  
 If you would like to play along, head over to [installation](/docs/installation)
 first to get ayakashi in your system.  
 
-We will make a pretty simple scrapper that loads a github repo,
+We will make a pretty simple scraper that loads a github repo,
 clicks a button and extracts some data like the clone url and the star count.  
 
-## The scrapper file
+## The scraper file
 
 We will place all of our code in a single file to keep things simple.  
 Here is the complete code:
@@ -69,11 +69,11 @@ module.exports = async function(ayakashi) {
 };
 ```
 
-As you can see, a scrapper is a [nodejs](https://nodejs.org) module that exports an
+As you can see, a scraper is a [nodejs](https://nodejs.org) module that exports an
 [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function
 (so we can use the convenient nice `async/await` syntax).  
 
-The scrapper does the following things in a serial manner:
+The scraper does the following things in a serial manner:
 
 * Loads a repository page
 * Creates the `about` prop and then extracts its value as text
@@ -103,10 +103,10 @@ with the extracted data.
 ## Simple mode (`--simple`)
 
 On our `run` command, the `--simple` flag is used to enable simple mode.  
-With simple mode we can run single file scrappers directly.  
-It's a valuable tool for quick prototyping, simple scrappers or examples.  
+With simple mode we can run single file scrapers directly.  
+It's a valuable tool for quick prototyping, simple scrapers or examples.  
 By default the `run` command is looking for an Ayakashi project folder, which is what we will
-build on the [complete scrapper project](/docs/guide/building-a-complete-scraping-project.html) section.
+build on the [complete scraper project](/docs/guide/building-a-complete-scraping-project.html) section.
 
 ## Next steps
 
@@ -114,4 +114,4 @@ This section served as an introduction to get a bit familiar with the base API
 and the `run` command.  
 Next follows the [tour](/docs/guide/tour.html) in which we will get in more detail for each concept
 and then move on to build a [complete project](/docs/guide/building-a-complete-scraping-project.html)
-by re-using the scrapper of this section while enhancing it.
+by re-using the scraper of this section while enhancing it.

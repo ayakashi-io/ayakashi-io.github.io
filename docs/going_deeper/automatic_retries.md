@@ -8,7 +8,7 @@ nav_order: 9
 # Automatic retries
 
 Doing any work that involves the network or external resources can be unpredictable and error-prone, that's
-why Ayakashi includes some retrying mechanisms to make our scrappers more robust.
+why Ayakashi includes some retrying mechanisms to make our scrapers more robust.
 
 ## Retrying distinct operations
 
@@ -37,7 +37,7 @@ the retry so it can be used for any kind of operation that has a chance to fail.
 
 ## Retrying a whole pipeline step
 
-A whole pipeline step (scrapper or script) can also be retried by specifying a `retries` key in
+A whole pipeline step (scraper or script) can also be retried by specifying a `retries` key in
 `ayakashi.config.js` for that step:
 
 ```js
@@ -47,20 +47,20 @@ module.exports = {
         type: "script",
         module: "myScript"
     }, {
-        type: "scrapper",
-        module: "myScrapper",
+        type: "scraper",
+        module: "myScraper",
         config: {
             retries: 10
         }
     }, {
-        type: "scrapper",
-        module: "anotherScrapper"
+        type: "scraper",
+        module: "anotherScraper"
     }]
 };
 ```
 
-If `myScrapper` raises any unhandled error, it will then be retried for 10 times by reloading the whole
+If `myScraper` raises any unhandled error, it will then be retried for 10 times by reloading the whole
 step each time (so it will start again from the very beginning of the step).  
 If it doesn't succeed after 10 times, the step will be aborted and the pipeline execution
-will be halted (`anotherScrapper` won't run).  
+will be halted (`anotherScraper` won't run).  
 By default **no retries** are performed in any step.

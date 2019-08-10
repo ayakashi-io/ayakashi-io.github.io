@@ -8,11 +8,11 @@ nav_order: 2
 # Loading 3rd party libraries as preloaders
 
 Ayakashi allows any 3rd party package (that can be used in the browser) to be loaded and be available in the page
-for your scrappers to use.  
+for your scrapers to use.  
 <br/>
 **Note**: Preloaders are used to load extra code in the **actual browser page**, so you can then use it
 inside [evaluate()](/docs/going_deeper/evaluating-javascript-expressions.html) calls.  
-If you need any kind of library in your scrappers or scripts just install it and `require()` it as you normally would.
+If you need any kind of library in your scrapers or scripts just install it and `require()` it as you normally would.
 
 ## Example (lodash)
 
@@ -24,15 +24,15 @@ Inside the project folder, run:
 npm install --save lodash
 ```
 
-Then let's load it in our scrapper.  
+Then let's load it in our scraper.  
 Inside the project's `ayakashi.config.js`:
 
 ```js
 module.exports = {
     //... the rest of the file
     "waterfall": [{
-        "type": "scrapper",
-        "module": "myScrapper",
+        "type": "scraper",
+        "module": "myScraper",
         "load": {
             "preloaders": [{
                 module: "lodash",
@@ -67,8 +67,8 @@ npm install --save jquery
 module.exports = {
     //... the rest of the file
     "waterfall": [{
-        "type": "scrapper",
-        "module": "myScrapper",
+        "type": "scraper",
+        "module": "myScraper",
         "load": {
             "preloaders": [{
                 module: "jquery",

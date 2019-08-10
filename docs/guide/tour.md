@@ -13,10 +13,10 @@ nav_order: 2
 Welcome aboard!  
 In this section we will cover all of Ayakashi's basic building blocks and
 how they all fit together to create complete and ambitious scraping systems.  
-We will start with **scrappers** and the different components that comprise a scrapper,
+We will start with **scrapers** and the different components that comprise a scraper,
 then move to **scripts** and finally see how we use the two in a **pipeline**.
 
-* scrappers
+* scrapers
   * props
   * extractors
   * actions
@@ -25,14 +25,14 @@ then move to **scripts** and finally see how we use the two in a **pipeline**.
 * pipelines
 {:toc}
 
-## scrappers
+## scrapers
 
-If you have already read how to [run a simple scrapper](/docs/guide/running-a-simple-scrapper.html)
-you already know kind of how scrappers look like.  
-Inside scrappers we place our page interaction logic, like navigation
+If you have already read how to [run a simple scraper](/docs/guide/running-a-simple-scraper.html)
+you already know kind of how scrapers look like.  
+Inside scrapers we place our page interaction logic, like navigation
 and interacting with page elements (clicking things, filling forms etc).  
 One more thing we want to do in a page is to **extract** data from it, we accomplice this
-inside a scrapper as well.
+inside a scraper as well.
 
 ### props
 
@@ -111,14 +111,14 @@ as well as how to [create your own](/docs/advanced/creating-your-own-actions.htm
 
 ### preloaders
 
-Preloaders are used to load a piece of code and make it available in a page that will be loaded by a scrapper.  
+Preloaders are used to load a piece of code and make it available in a page that will be loaded by a scraper.  
 Both [3rd party libraries](/docs/going_deeper/loading-libraries-as-preloaders.html)
 as well as [any other code](/docs/advanced/creating-your-own-preloaders.html)
 you wish can be preloaded and made available (or even executed) before any of the page's code has begun loading.
 
 ## scripts
 
-Scripts are really simple, they are just functions that complement our scrappers.  
+Scripts are really simple, they are just functions that complement our scrapers.  
 For example a script could:
 
 * cleanup/normalize the data we just extracted
@@ -128,12 +128,12 @@ For example a script could:
 The [builtin saving methods](/docs/guide/builtin-saving-scripts.html) (sql, json, csv)
 are actually implemented as scripts.  
 One thing to note is that inside scripts there is no page or browser access, they are meant to be run before and/or after
-scrappers (which of course have page access) in a standalone manner to keep things structured and readable.  
+scrapers (which of course have page access) in a standalone manner to keep things structured and readable.  
 We will see an example of how to create a script when we build our first [complete project](/docs/guide/building-a-complete-scraping-project.html).
 
 ## pipelines
 
-With pipelines we can integrate scrappers and scripts together.  
+With pipelines we can integrate scrapers and scripts together.  
 They are defined inside an `ayakashi.config.js` file which is the file that describes
 and configures a complete ayakashi project.  
 We will see a complete example in the next section where we will build a [complete project](/docs/guide/building-a-complete-scraping-project.html),
@@ -142,8 +142,8 @@ but they are pretty simple and they look like this:
 ```js
 {
     waterfall: [{
-        type: "scrapper",
-        module: "myScrapper"
+        type: "scraper",
+        module: "myScraper"
     }, {
         type: "script",
         module: "printToConsole"
@@ -151,7 +151,7 @@ but they are pretty simple and they look like this:
 }
 ```
 
-This instructs ayakashi to first run our scrapper `myScrapper` and then pass the extracted data
+This instructs ayakashi to first run our scraper `myScraper` and then pass the extracted data
 to our `printToConsole` script which will just print our data.  
 The `waterfall` part means: "run this in a serial (waterfall) manner, one after the other, while passing data
 from one to the next".  

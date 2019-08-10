@@ -32,7 +32,7 @@ Runs a project.
 
 | Option | Description | Default |
 | --- | --- |
-| `dir` | The root directory of a project or a scrapper file when `--simple` mode is used | `.` (current directory)
+| `dir` | The root directory of a project or a scraper file when `--simple` mode is used | `.` (current directory)
 
 ### Run arguments
 
@@ -40,7 +40,7 @@ Runs a project.
 | --- | --- |
 | `--configFile` or `-c` | Use an alternative configFile | `ayakashi.config.js`
 | `--jsonConfig` or `-jc` | Use a json string as config |
-| `--simple` | Run a single scrapper | `false`
+| `--simple` | Run a single scraper | `false`
 | `--out` | Select the saving format when `--simple` mode is used. Available formats: `sqlite`, `csv`, `json`, `stdout` | `stdout`
 
 ### Examples
@@ -58,7 +58,7 @@ ayakashi run --configFile=otherConfig.js ./myProject
 ```
 
 ```bash
-ayakashi run --simple ./myProject/myScrapper.js --out=json
+ayakashi run --simple ./myProject/myScraper.js --out=json
 ```
 
 ```bash
@@ -66,12 +66,12 @@ ayakashi run --configFile alternative_config.js
 ```
 
 ```bash
-ayakashi run --jsonConfig '{"config":{},"waterfall":[{"type":"apiScrapper","module":"myScrapper"}]}'
+ayakashi run --jsonConfig '{"config":{},"waterfall":[{"type":"apiScraper","module":"myScraper"}]}'
 ```
 
 ## new
 
-Generates a new `project|scrapper|renderlessScrapper|apiScrapper|script|prop|action|extractor|preloader`.
+Generates a new `project|scraper|renderlessScraper|apiScraper|script|prop|action|extractor|preloader`.
 
 | Option | Description | Default |
 | --- | --- |
@@ -92,7 +92,7 @@ ayakashi new --extractor --name=myExtractor
 ```
 
 ```bash
-ayakashi new --renderlessScrapper --name=myScrapper
+ayakashi new --renderlessScraper --name=myScraper
 ```
 
 If `--name` is omitted, an interactive prompt will be shown to enter the name:

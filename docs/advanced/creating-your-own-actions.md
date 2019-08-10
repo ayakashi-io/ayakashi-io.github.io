@@ -62,7 +62,7 @@ The boilerplate does the following:
 
 Let's create a complete action called `markMatches()` which will take a prop and
 add a red border around all of its element matches to help us see what our queries are
-doing while we are developing our scrapper.
+doing while we are developing our scraper.
 
 Let's generate our file:
 
