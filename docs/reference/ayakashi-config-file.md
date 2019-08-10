@@ -47,7 +47,7 @@ The configuration options used for steps inside `parallel` or `waterfall`.
 
 | Option | Type | Description |
 | --- | --- |
-| `type` | string | The type of the step. Valid values are `scraper` or `script`. |
+| `type` | string | The type of the step. Valid values are `scraper`, `renderlessScraper`, `apiScraper` or `script`. |
 | `module` | string | The name of the module. |
 | `params` | object | A custom parameters object to pass to the module. |
 | `config` | object | Extra configuration for the step. See below |
