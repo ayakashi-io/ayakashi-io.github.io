@@ -30,6 +30,7 @@ is there. If the html contains everything you need and you also don't need to pe
 
 * Generating and running a renderless scraper
 * What's available in a renderless scraper
+* Using loadHtml() directly
 * A note about style domQL queries
 {:toc}
 
@@ -94,9 +95,15 @@ ayakashi run
 
 Renderless scrapers have full access to [domQL](/docs/guide/querying-with-domql.html) and can
 use the [extraction API](/docs/guide/data-extraction.html) as normal.  
-They also support [retries](/docs/going_deeper/automatic_retries.html) and the `yield()` methods.  
+They also support [retries](/docs/going_deeper/automatic_retries.html) and the [yield](/docs/going_deeper/yielding-data.html) methods.  
 Basically, the only thing they can't do is use the dynamic [core actions](/docs/reference/builtin-actions.html)
 available in normal scrapers.
+
+## Using loadHtml() directly
+
+Renderless scrapers also have a `.loadHtml()` method which allows loading raw html strings (whole documents or fragments) directly.  
+It can be useful if you need to get some html from another source, .eg from a database using a script or from an API call using an
+[API scraper](/docs/guide/api-scrapers.html) (or the [request API](/docs/guide/api-scrapers.html#the-request-api-is-available-on-all-scraper-types)).
 
 ## A note about style domQL queries
 

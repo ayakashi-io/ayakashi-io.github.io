@@ -76,7 +76,7 @@ There are methods for all available http verbs:
 All methods accept a url string and an optional configuration object (check options below).  
 They return a promise with the request's response body.
 
-API scrapers also support [retries](/docs/going_deeper/automatic_retries.html) and the `yield()` methods.  
+API scrapers also support [retries](/docs/going_deeper/automatic_retries.html) and the [yield](/docs/going_deeper/yielding-data.html) methods.  
 Proxy settings, user agents, session configuration, standard headers etc are handled automatically.
 
 ## Request options
