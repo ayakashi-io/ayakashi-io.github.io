@@ -365,8 +365,9 @@ ayakashi
         })
 ```
 
-Like the normal `select()`, convenience methods also exist for child selects
+Like the normal `select()`, convenience methods also exist for child selections
 
+* `selectChildren()` (no match limit)
 * `selectChild()` (`limit(1)`)
 * `selectFirstChild()` (same as `selectChild()`)
 * `selectLastChild()` (`limit(1)` and `order("desc")`)
@@ -404,7 +405,7 @@ ayakashi
         });
 ```
 
-If we extract the `childProp`, we will get a result like this: `[{childProp: "link1"}, {childProp: "link2"}]`.  
+If we [extract](/docs/guide/data-extraction.html) the `childProp`, we will get a result like this: `["link1", "link2"]`.  
 If we were also extracting more child props from each container this would have messed our ordering
 and the final extraction result would be incorrect.  
 In such a case we can use the `trackMissingChildren()` method like this:
@@ -426,7 +427,7 @@ ayakashi
         });
 ```
 
-Now, our result will be: `[{childProp: "link1"}, {childProp: ""}, {childProp: "link2"}]`.  
+Now, our result will be: `["link1", "", "link2"]`.  
 `trackMissingChildren()` will add a child match placeholder if a child does not exist in a collection of parents.  
 This will ensure proper ordering when extracting children that might sometimes not exist.
 
@@ -473,7 +474,9 @@ ayakashi
 
 For `dataKey`, use only the part of the name after the `data-`.  
 So `data-content` becomes just `content`.  
-They behave like any normal attribute so all of the operators apply here
+If the attribute name contains multiple words separated by hyphens (`-`) the attribute name
+has to be properly camelCased. For example `data-index-name` has to be written like `indexName`.  
+Data attributes behave like any normal attribute so all of the operators apply here
 as well.
 
 ## Querying with style
