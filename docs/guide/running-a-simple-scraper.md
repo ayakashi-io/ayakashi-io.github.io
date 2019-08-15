@@ -29,13 +29,13 @@ module.exports = async function(ayakashi) {
     ayakashi
         .selectOne("about")
         .where({itemprop: {eq: "about"}});
-    const about = await ayakashi.extract("about", "text");
+    const about = await ayakashi.extractFirst("about", "text");
 
     //find and extract star count
     ayakashi
         .selectOne("stars")
         .where({href: {like: "/stargazers"}});
-    const stars = await ayakashi.extract("stars", "number");
+    const stars = await ayakashi.extractFirst("stars", "number");
 
     //find the green button that opens the clone dialog
     ayakashi
@@ -62,7 +62,7 @@ module.exports = async function(ayakashi) {
     ayakashi
         .selectOne("cloneUrl")
         .where({"aria-label": {like: "Clone this repository at"}});
-    const cloneUrl = await ayakashi.extract("cloneUrl", "value");
+    const cloneUrl = await ayakashi.extractFirst("cloneUrl", "value");
 
     //return our results
     return {about, stars, cloneUrl};
@@ -71,7 +71,7 @@ module.exports = async function(ayakashi) {
 
 As you can see, a scraper is a [nodejs](https://nodejs.org) module that exports an
 [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function
-(so we can use the convenient nice `async/await` syntax).  
+(so we can use the convenient `async/await` syntax).  
 
 The scraper does the following things in a serial manner:
 
@@ -85,7 +85,7 @@ The scraper does the following things in a serial manner:
 
 The prop construct is used to
 define all the different entities in the page by giving them a name and how to find them.  
-They can then be used for extraction or passed to actions (like `click` above).  
+They can then be used for extraction or as input in actions (like in the `click` action above).  
 We will explore them in more detail in the [tour section](/docs/guide/tour.html#props) and learn
 everything about the syntax in the [domQL section](/docs/guide/querying-with-domql.html).  
 Extracting data is also fully covered in the [data extraction section](/docs/guide/data-extraction.html).
@@ -112,6 +112,6 @@ build on the [complete scraper project](/docs/guide/building-a-complete-scraping
 
 This section served as an introduction to get a bit familiar with the base API
 and the `run` command.  
-Next follows the [tour](/docs/guide/tour.html) in which we will get in more detail for each concept
+Next follows the [tour](/docs/guide/tour.html) in which we will get in more detail about each concept
 and then move on to build a [complete project](/docs/guide/building-a-complete-scraping-project.html)
 by re-using the scraper of this section while enhancing it.

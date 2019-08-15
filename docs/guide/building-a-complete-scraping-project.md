@@ -5,12 +5,31 @@ parent: Guide
 nav_order: 3
 ---
 
+<!-- markdownlint-disable MD022 -->
 # Building a complete scraping project
+{: .no_toc }
+<!-- markdownlint-enable MD022 -->
 
 In this section we will build a complete Ayakashi scraping project by re-using our [simple github scraper](/docs/guide/running-a-simple-scraper.html)
 while extending its functionality and exploring how Ayakashi projects are structured.  
 If you haven't read it already, take a minute to check the [simple github scraper](/docs/guide/running-a-simple-scraper.html)
 we built in the first section and then the short Ayakashi [tour](/docs/guide/tour.html).
+
+* Generating the project
+* What we are going to build
+* Our config
+* The timespans script
+* Getting the trending repos
+  * Our scraper
+  * I/O
+  * Defining prop in prop files
+  * Using params
+  * Yielding data
+* The repo info scraper
+* Saving our data
+* Let’s run it
+* Parting words
+{:toc}
 
 ## Generating the project
 
@@ -53,10 +72,16 @@ module.exports = {
         module: "getTrendingRepos",
         params: {
             repoLimit: 5
+        },
+        config: {
+            retries: 5
         }
     }, {
         type: "scraper",
         module: "getRepoInfo",
+        config: {
+            retries: 5
+        },
         parallel: [{
             type: "script",
             module: "saveToCSV"
@@ -75,7 +100,8 @@ Our [pipeline config](/docs/guide/tour.html#pipelines) describes exactly what we
 In a serial manner (waterfall) it will first run our script `getTimespans` which will pass the
 timespans we want (daily, weekly, monthly) to our `getTrendingRepos` scraper which in turn will pass
 each trending repository link to our `getRepoInfo` scraper to extract the data we want.  
-Finally, our `getRepoInfo` will run three different saving scripts in parallel by passing the extracted data to each.
+Finally, our `getRepoInfo` will run three different saving scripts in parallel by passing the extracted data to each.  
+We also specify some [retries](/docs/going_deeper/automatic_retries.html) in our scrapers to make sure they complete even if there is some network problem.
 
 ## The timespans script
 
@@ -132,28 +158,24 @@ module.exports = async function(ayakashi, input, params) {
     await ayakashi.waitUntilVisible("trendingRepos");
 
     //extract the href from each entry of the list
-    const trending = await ayakashi.extract("trendingRepos", {
-        repoLink: "href"
-    });
+    const trending = await ayakashi.extract("trendingRepos", "href");
 
     //limit our links based on the repoLimit parameter we have
     const limitedTrendingRepos = trending.slice(0, params.repoLimit);
 
-    //yield each repoLink to our pipeline
-    for (const repoLink of limitedTrendingRepos) {
-        await ayakashi.yield(repoLink);
-    }
+    //yield each href to our pipeline
+    await ayakashi.yieldEach(limitedTrendingRepos);
 };
 ```
 
-### The input object
+### I/O
 
 Ok, there are a few things to notice here.  
 First see how the timespan is being passed from our script and is available inside
-the `input` object which we use to load the page.  
-**Data passed from previous pipeline step are available in an input object.**  
+the `input` argument which we use to load the page.  
+**Outputs from the previous pipeline step are available as inputs in the next step**  
 
-### Defining prop in prop files
+### Defining props in prop files
 
 Then we wait for our `trendingRepos` to be loaded and visible. But where is the actual prop definition?  
 If you remember in the [simple scraper](/docs/guide/running-a-simple-scraper.html) we built before, all
@@ -179,7 +201,7 @@ module.exports = function(ayakashi) {
         .where({
             and: [{
                 tagName: {
-                    eq: "A"
+                    eq: "a"
                 }
             }, {
                 "style-font-size": {
@@ -208,8 +230,8 @@ params: {
 
 Anything placed in `params` of a scraper or script in the config file will then be available
 for the scraper/script to use inside the `params` object.  
-In our case we passed a `repoLimit` to limit the amount of trending repos to fetch to five.  
-So, we use our parameter and slice the original extracted list of links into a new `limitedTrendingRepos`
+In our case we passed a `repoLimit` to limit the amount of trending repos to fetch.  
+So we use our parameter and slice the original extracted list of links into a new `limitedTrendingRepos`
 variable which will contain only the first five links.
 
 ### Yielding data
@@ -217,15 +239,16 @@ variable which will contain only the first five links.
 On the [simple scraper](/docs/guide/running-a-simple-scraper.html) we built before we just used a `return` to
 return our data at the very end of the function, which is fine when we want to return a single piece
 of data and then exit.  
-Using `yield` we can generate results multiple times and let the rest of our pipeline keep running in parallel with
-the data we keep on feeding.  
+By using [yield](docs/going_deeper/yielding-data.html) (`yieldEach()` in our example) we can generate results multiple
+times and let the rest of our pipeline keep running in parallel with the data we keep on feeding.  
 <br/>
 **`yield` can be placed anywhere inside our scrapers and any number of times as well.**  
 <br/>
 A good example to better understand the usefulness of `yield`
 would be to imagine scraping a page that uses infinite scrolling to load more and more data as we scroll.  
 Instead of keeping all the data in memory stored in a variable and return it all at once at the end,
-we can keep using `yield` after every time we scroll and get new data.  This should greatly improve the
+we can keep using `yield` after every time we scroll and get new data.  
+This should greatly improve the
 parallelism and performance of our scraper while being more readable and easier to understand.
 
 ## The repo info scraper
@@ -243,25 +266,25 @@ ayakashi new --scraper --name=getRepoInfo
  * @param {import("@ayakashi/types").IAyakashiInstance} ayakashi
  */
 module.exports = async function(ayakashi, input, params) {
-    console.log("getting info for:", input.repoLink);
+    console.log("getting info for:", input);
 
     //go to the repo page
-    await ayakashi.goTo(input.repoLink);
+    await ayakashi.goTo(input);
 
     //wait until the about section is loaded and visible
     await ayakashi.waitUntilVisible("about");
 
     //extract the about message
-    const about = await ayakashi.extract("about", "text");
+    const about = await ayakashi.extractFirst("about", "text");
 
     //extract stars count
-    const stars = await ayakashi.extract("stars", "number");
+    const stars = await ayakashi.extractFirst("stars", "number");
 
     //click the clone button
     await ayakashi.click("cloneDialogTrigger");
 
     //extract the clone url
-    const cloneUrl = await ayakashi.extract("cloneUrl", "value");
+    const cloneUrl = await ayakashi.extractFirst("cloneUrl", "value");
 
     //return our results
     return {about, stars, cloneUrl};
@@ -270,7 +293,7 @@ module.exports = async function(ayakashi, input, params) {
 
 Our `getRepoInfo` will run for each repo link we yield in our `getTrendingRepos` scraper.  
 
-And here are our props (check the new prop command from above to generate the files).  
+And here are our props (check the new prop command from above on how to generate the files).  
 
 `props/infoProps.js`
 
@@ -321,7 +344,7 @@ module.exports = function(ayakashi) {
 You can place each prop in each own file or group them together.  
 Here i placed all the info props together and the button trigger alone.
 
-### Saving our data
+## Saving our data
 
 Finally, let's save our data.  
 We nested a parallel step inside our `getRepoInfo` scraper to save our data in
@@ -340,7 +363,7 @@ parallel: [{
 }]
 ```
 
-### Let's run it
+## Let's run it
 
 Inside our project's root directory run:
 
@@ -352,7 +375,7 @@ It will load our config and start executing our pipeline while printing some pro
 After it's done, it will create a `data` directory in our project folder containing a subfolder with the
 start datetime as a name and inside it three different files. A `data.json`, `data.csv` and `database.sqlite` with our data.
 
-### Parting words
+## Parting words
 
 In this section we built a complete project by using a more complex pipeline that utilizes
 multiple scrapers and scripts, running some of them in order and others in parallel.  
@@ -362,5 +385,5 @@ Something to keep in mind is that you don't have to use every available tool and
 and having choice is enough.  
 Sometimes a simple, [single file scraper](/docs/guide/running-a-simple-scraper.html) will be a better choice than a full
 blown project or inlining the props instead of placing them in their own files
-or just using a simple `return` instead of `yield`.  
+or just using a simple `return` instead of [yield](/docs/going_deeper/yielding-data.html).  
 Use whatever best fits your usecase and aids in the readability and maintainability of your scrapers.

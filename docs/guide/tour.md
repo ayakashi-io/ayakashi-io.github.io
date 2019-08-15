@@ -67,7 +67,7 @@ They are defined by giving them a name and a domQL query for how to find them in
 ```
 
 We can then use it by referencing its name (`myButton`).  
-Props are a vital component since they are used as both action input and for data extraction.  
+Props are a vital component since they are used as both action input and data extraction models.  
 Make sure to read the [domQL section](/docs/guide/querying-with-domql.html)
 for a complete reference on how to define and query them.
 
@@ -87,7 +87,8 @@ ayakashi.select("myDivProp").where({id: {eq: "myDiv"}});
 we can extract its text by using the `text` extractor, like this:
 
 ```js
-const result = await ayakashi.extract("myDivProp", "text");
+const result = await ayakashi.extractFirst("myDivProp", "text");
+// => "hello"
 ```
 
 This is a very basic example and there is quite more to read about extractors on the
@@ -106,7 +107,7 @@ await ayakashi.waitUntilExists("searchBox");
 await ayakashi.typeIn("searchBox", "some text to search");
 ```
 
-You can read about all of the builtin actions in the [reference](/reference/builtin-actions.html).
+You can read about all of the builtin actions in the [reference](/reference/builtin-actions.html),
 as well as how to [create your own](/docs/advanced/creating-your-own-actions.html).
 
 ### preloaders
