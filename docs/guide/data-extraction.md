@@ -20,12 +20,15 @@ If you haven't read it already, take a minute to check the short [tour](/docs/gu
 <!-- markdownlint-enable MD022 -->
 
 * Text extraction
-* Attribute extraction
+* HTML property extraction
+* HTML attribute extraction
+* HTML data-attribute extraction
 * Regex extraction
-* Extracting multiple values
 * Using defaults
 * Using extraction functions
 * Other builtin extractors
+* extractFirst()
+* extractLast()
 * Creating your own extractors
 {:toc}
 
@@ -38,26 +41,24 @@ const result = await ayakashi.extract("myProp", "text");
 ```
 
 If no extractor is specified, the `text` extractor is used.  
-So this is equivalent
+This is equivalent to the above:
 
 ```js
 const result = await ayakashi.extract("myProp");
 ```
 
-The extraction result will be an array of objects with key the prop's
-name and value our extraction.  
-So for the following
+So for the following html:
 
 ```html
 <div id="myDiv">hello</div>
 ```
 
-The result will be this
+The result will be this:
 
 ```js
 ayakashi.select("myDivProp").where({id: {eq: "myDiv"}});
 const result = await ayakashi.extract("myDivProp");
-// => [{myDivProp: "hello"}]
+// => ["hello"]
 ```
 
 If the prop has multiple matches, all of them will be extracted
@@ -71,12 +72,14 @@ If the prop has multiple matches, all of them will be extracted
 ```js
 ayakashi.select("helloDiv").where({class: {eq: "divs"}});
 const result = await ayakashi.extract("helloDiv");
-// => [{helloDiv: "hello"}, {helloDiv: "hello again"}, {helloDiv: "hello again again"}]
+// => ["hello", "hello again", "hello again again"]
 ```
 
-## Attribute extraction
+If the prop has no matches, an empty array `[]` will be returned.
 
-HTML attributes can be used as extractor names
+## HTML property extraction
+
+HTML properties can be used as extractor names
 
 ```html
 <a href="http://example.com" id="example">Click it!</a>
@@ -85,7 +88,43 @@ HTML attributes can be used as extractor names
 ```js
 ayakashi.selectOne("myLink").where({id: {eq: "example"}});
 const result = await ayakashi.extract("myLink", "href");
-// => [{myLink: "http://example.com"}]
+// => ["http://example.com"]
+```
+
+## HTML attribute extraction
+
+HTML attributes can be used as extractor names
+
+```html
+<a href="http://example.com" id="example" title="this is a link">Click it!</a>
+```
+
+```js
+ayakashi.selectOne("myLink").where({id: {eq: "example"}});
+const result = await ayakashi.extract("myLink", "title");
+// => ["this is a link"]
+```
+
+## HTML data-attribute extraction
+
+HTML data-attributes can be used as extractor names
+
+```html
+<a href="http://example.com" id="example" data-my-key="some value">Click it!</a>
+```
+
+```js
+ayakashi.selectOne("myLink").where({id: {eq: "example"}});
+const result = await ayakashi.extract("myLink", "data-my-key");
+// => ["some value"]
+```
+
+A [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) camelCased name can be used as well
+
+```js
+ayakashi.selectOne("myLink").where({id: {eq: "example"}});
+const result = await ayakashi.extract("myLink", "myKey");
+// => ["some value"]
 ```
 
 ## Regex extraction
@@ -100,7 +139,7 @@ It will return only the substring matched by the regex
 ```js
 ayakashi.selectOne("myContentDiv").where({id: {eq: "content"}});
 const result = await ayakashi.extract("myContentDiv", /hello there/);
-// => [{myContentDiv: "hello there"}]
+// => ["hello there"]
 ```
 
 If the regex didn't match anything, an empty string will be returned
@@ -114,41 +153,7 @@ If the regex didn't match anything, an empty string will be returned
 ```js
 ayakashi.select("helloDiv").where({class: {eq: "divs"}});
 const result = await ayakashi.extract("helloDiv", /hello again again/);
-// => [{helloDiv: ""}, {helloDiv: ""}, {helloDiv: "hello again again"}]
-```
-
-## Extracting multiple values
-
-Multiple values can be extracted from a prop match at once
-
-```html
-<a href="http://example.com" id="example">Click it!</a>
-```
-
-```js
-ayakashi.selectOne("myLink").where({id: {eq: "example"}});
-const result = await ayakashi.extract("myLink", {
-    link: "href",
-    text: "text"
-});
-// => [{link: "http://example.com", text: "Click it!"}]
-```
-
-The object notation can also be used if we want a key different than the prop name
-(useful for anonymous props)
-
-```html
-<a href="http://example.com" id="example">Click it!</a>
-```
-
-```js
-ayakashi.selectOne("myLink").where({id: {eq: "example"}});
-const result = await ayakashi.extract("myLink", "href");
-// => [{myLink: "http://example.com"}]
-const result2 = await ayakashi.extract("myLink", {
-    link: "href"
-});
-// => [{link: "http://example.com"}]
+// => ["", "", "hello again again"]
 ```
 
 ## Using defaults
@@ -164,10 +169,9 @@ is not found. This can be overwritten with our own defaults
 ```js
 ayakashi.select("helloDiv").where({class: {eq: "divs"}});
 const result = await ayakashi.extract("helloDiv", ["text", "nothing to say"]);
-// => [{helloDiv: "hello again again"}, {helloDiv: "nothing to say"}]
+// => ["hello", "nothing to say"]
 ```
 
-Overwritten defaults can be used with regexes and in object form as well.  
 **Note:** a default value is used as is and is not evaluated
 
 ```js
@@ -192,7 +196,7 @@ ayakashi.selectOne("myLink").where({id: {eq: "example"}});
 const result = await ayakashi.extract("myLink", function(el) {
     return el.href;
 });
-// => [{myLink: "http://example.com"}]
+// => ["http://example.com"]
 ```
 
 No checks will be made for the return value and no defaults will be applied.  
@@ -206,6 +210,42 @@ in the future.
 * `integer` Extracts integers only and returns an integer data type
 * `number` (alias of `integer`)
 * `float` Extracts floating point numbers only and returns a float data type
+
+## extractFirst()
+
+`extractFirst()` can be used instead of `extract()` and it will extract data only from the first match of a prop.
+
+```html
+<div class="divs">hello</div>
+<div class="divs">hello again</div>
+<div class="divs">hello again again</div>
+```
+
+```js
+ayakashi.select("helloDiv").where({class: {eq: "divs"}});
+const result = await ayakashi.extractFirst("helloDiv");
+// => "hello"
+```
+
+If the prop has no matches, `extractFirst()` will return `null`.
+
+## extractLast()
+
+`extractLast()` can be used instead of `extract()` and it will extract data only from the last match of a prop.
+
+```html
+<div class="divs">hello</div>
+<div class="divs">hello again</div>
+<div class="divs">hello again again</div>
+```
+
+```js
+ayakashi.select("helloDiv").where({class: {eq: "divs"}});
+const result = await ayakashi.extractLast("helloDiv");
+// => "hello again again"
+```
+
+If the prop has no matches, `extractLast()` will return `null`.
 
 ## Creating your own extractors
 
