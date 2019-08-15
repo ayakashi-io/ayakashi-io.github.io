@@ -89,6 +89,14 @@
     <script src="{{ "/assets/js/pjax.min.js" | absolute_url }}"></script>
     <script src="{{ "/assets/js/topbar.min.js" | absolute_url }}"></script>
     <script>
+        function jumpToAnchor() {
+            if (location.hash) {
+                const section = document.querySelector(location.hash);
+                if (section) {
+                    section.scrollIntoView();
+                }
+            }
+        }
         document.addEventListener("DOMContentLoaded", function() {
             var pjax = new Pjax({
                 elements: "a",
@@ -120,9 +128,11 @@
             document.querySelector("body > div > div.main-content-wrap.js-main-content").scrollTo(0, 0);
             toggleNav();
             initSearch();
+            jumpToAnchor();
         });
         document.addEventListener('pjax:send', topbar.show);
         document.addEventListener('pjax:complete', topbar.hide);
+        jumpToAnchor();
     </script>
 </body>
 </html>
