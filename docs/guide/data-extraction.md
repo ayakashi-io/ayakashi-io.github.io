@@ -29,6 +29,7 @@ If you haven't read it already, take a minute to check the short [tour](/docs/gu
 * Other builtin extractors
 * extractFirst()
 * extractLast()
+* Grouping extracted data
 * Creating your own extractors
 {:toc}
 
@@ -246,6 +247,90 @@ const result = await ayakashi.extractLast("helloDiv");
 ```
 
 If the prop has no matches, `extractLast()` will return `null`.
+
+## Grouping extracted data
+
+Many times when we extract multiple sets of related data from a page we probably want to group them together.  
+Imagine the following html:
+
+```html
+<div class="container">
+    <label>Link 1</label>
+    <a href="http://example.com">click me</a>
+</div>
+<div class="container">
+    <label>Link 2</label>
+    <a href="http://example2.com">click me</a>
+</div>
+<div class="container">
+    <label>Link 3</label>
+    <a href="http://example3.com">click me</a>
+</div>
+```
+
+Here, each link belongs with its label. Let' see how we can group them.
+
+```js
+//first let's define our props
+ayakashi
+    .select("parent")
+    .where({
+        class: {
+            eq: "container"
+        }
+    })
+    .trackMissingChildren();
+ayakashi
+    .select("links")
+        .where({
+            tagName: {
+                eq: "a"
+            }
+        })
+        .from("parent");
+ayakashi
+    .select("labels")
+        .where({
+            tagName: {
+                eq: "label"
+            }
+        })
+        .from("parent");
+
+//let's extract them
+const links = await ayakashi.extract("links", "href");
+// => ["http://example.com", "http://example2.com", "http://example3.com"]
+const labels = await ayakashi.extract("labels");
+// => ["Link 1", "Link 2", "Link 3"]
+
+//we can use ayakashi.join() to group them together
+const groupedData = ayakashi.join({
+    link: links
+    label: labels
+});
+
+//this is the grouped result
+console.log(groupedData);
+/*
+=> [{
+    link: "http://example.com",
+    label: "Link 1"
+}, {
+    link: "http://example2.com",
+    label: "Link 2"
+}, {
+    link: "http://example3.com",
+    label: "Link 3"
+}]
+*/
+```
+
+`ayakashi.join()` will join all arrays together into groups based on their index.  
+If all of the array values are not of the same length an error will be thrown.  
+If a non-array value is used it will be copied to every group.  
+[trackMissingChildren()](http://localhost:4000/docs/guide/querying-with-domql.html#tracking-missing-children)
+should be used in cases like these. It will ensure proper array lengths and correct ordering as long as a common
+parent prop is used.
 
 ## Creating your own extractors
 
