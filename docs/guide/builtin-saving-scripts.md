@@ -10,7 +10,7 @@ nav_order: 7
 {: .no_toc }
 <!-- markdownlint-enable MD022 -->
 
-Ayakashi comes bundled with a set of scripts to help saving extracted data without writing any extra code.  
+Ayakashi comes bundled with a set of scripts to help persisting extracted data without writing any extra code.  
 
 <!-- markdownlint-disable MD022 -->
 ## Table of contents
@@ -31,30 +31,39 @@ Ayakashi comes bundled with a set of scripts to help saving extracted data witho
 ## Limitations
 
 The builtin saving scripts are designed to work out of the box without the need of any extra code.  
-For that reason they will only work with data in the format returned by using [extract](/docs/guide/data-extraction.html)
-with props.  
-Both a single extracted prop and multiple extracted props wrapped in an object work:
+In order for this to work they need to be wrapped in an object with a key of your choice so they can
+be mapped into proper sql rows, csv lines and json objects.  
+
+Returning a single prop result can be done like this:
 
 ```js
-return ayakashi.extract("myProp", "text");
+return {
+    someKey: await ayakashi.extractFirst("myProp", "text")
+};
 ```
+
+And for multiple prop results:
 
 ```js
-const data1 = ayakashi.extract("myProp1", "text");
-const data2 = ayakashi.extract("myProp2", "text");
-const data3 = ayakashi.extract("myProp3", "text");
+const data1 = await ayakashi.extractFirst("myProp1", "text");
+const data2 = await ayakashi.extractFirst("myProp2", "text");
+const data3 = await ayakashi.extractFirst("myProp3", "text");
 
-return {data1, data2, data3}
+return {
+    key1: data1,
+    key2: data2,
+    key3: data3
+};
 ```
 
-When wrapping multiple extracted props in an object and these props contain multiple matches, the data will be grouped correctly
-and normalized into proper rows.
+If you need to return groups of multiple data sets please take a look
+in the [Grouping extracted data](http://localhost:4000/docs/guide/data-extraction.html#grouping-extracted-data) section.
 
 ## printToConsole
 
 Not exactly a saving script, the `printToConsole` script will just print the data passed to it in a table format.  
 Can really help while developing.  
-Use it like any other script by including in your [pipeline](/docs/guide/tour.html#pipelines) after the step that
+Use it like any other script by including it in your [pipeline](/docs/guide/tour.html#pipelines) after the step that
 outputs the data you want to print:
 
 ```js
