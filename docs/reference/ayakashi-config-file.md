@@ -38,8 +38,8 @@ Options for the top-level `config` object.
 | `windowHeight` | number | Sets the height of the browser window. Default is `1080`. |
 | `chromePath` | string | Use a custom chrome/chromium executable instead of the auto-downloaded one. Learn more [here](/docs/going_deeper/using-a-different-chrome.html) |
 | `ignoreCertificateErrors` | boolean | Ignore all certificate (ssl) errors. |
-| `bridgePort` | number | Sets the port of the internal bridge server, Default is `9731`. |
-| `protocolPort` | number | Sets the port of the internal devTools protocol server, Default is `9730`. |
+| `bridgePort` | number | Sets the port of the internal bridge server, default is `9731`. Use `0` for a random port. |
+| `protocolPort` | number | Sets the port of the internal devTools protocol server, default is `9730`. Use `0` for a random port. |
 
 ## Step configuration options
 
