@@ -40,10 +40,11 @@ Runs a project.
 | --- | --- |
 | `--configFile` or `-c` | Use an alternative configFile | `ayakashi.config.js`
 | `--jsonConfig` or `-jc` | Use a json string as config |
+| `--sessionKey` | Use a specific run session | `default`
 | `--simple` | Run a single scraper | `false`
 | `--out` | Select the saving format when `--simple` mode is used. Available formats: `sqlite`, `csv`, `json`, `stdout` | `stdout`
 | `--resume` | Resume execution of a previous unfinished run | `false`
-| `--restartDisabledSteps` | Will restart all steps that terminated due to an error. Only works when --resume is used | `false`
+| `--restartDisabledSteps` | Will restart all steps that terminated due to an error. Only works when `--resume` is used | `false`
 | `--clean` | Clear the previous run if it exists and start from the beginning | `false`
 
 ### Examples
@@ -70,6 +71,10 @@ ayakashi run --configFile alternative_config.js
 
 ```bash
 ayakashi run --jsonConfig '{"config":{},"waterfall":[{"type":"apiScraper","module":"myScraper"}]}'
+```
+
+```bash
+ayakashi run ./myProject --resume --sesionKey my_session
 ```
 
 ## new
