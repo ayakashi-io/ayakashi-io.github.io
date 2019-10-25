@@ -453,22 +453,36 @@ Any standard element attribute will work as expected.
 
 ## Querying data attributes
 
-The special attributes `dataKey` and `dataValue` make querying data attributes
-easy and readable.
+```js
+ayakashi
+    .select()
+    .where({
+        "data-content": {
+            like: "some content"
+        }
+    })
+```
+
+The special attributes `dataKey` and `dataValue` are also available if you need
+to query only for keys or only for values.
 
 ```js
 ayakashi
     .select()
     .where({
-        and: [{
-            datakey: {
-                eq: "content"
-            }
-        }, {
-            dataValue: {
-                like: "Here is my content:"
-            }
-        }]
+        datakey: {
+            eq: "content"
+        }
+    })
+```
+
+```js
+ayakashi
+    .select()
+    .where({
+        dataValue: {
+            like: "Here is my content:"
+        }
     })
 ```
 

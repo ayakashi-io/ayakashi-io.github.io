@@ -41,7 +41,9 @@ Runs a project.
 | `--configFile` or `-c` | Use an alternative configFile | `ayakashi.config.js`
 | `--jsonConfig` or `-jc` | Use a json string as config |
 | `--sessionKey` | Use a specific run session | `default`
-| `--simple` | Run a single scraper | `false`
+| `--simple` | Run a single [scraper](/docs/guide/running-a-simple-scraper.html) | `false`
+| `--simpleRenderless` | Run a single [renderlessScraper](/docs/guide/renderless-scrapers.html)| `false`
+| `--simpleApi` | Run a single [apiScraper](/docs/guide/api-scrapers.html) | `false`
 | `--out` | Select the saving format when `--simple` mode is used. Available formats: `sqlite`, `csv`, `json`, `stdout` | `stdout`
 | `--resume` | Resume execution of a previous unfinished run | `false`
 | `--restartDisabledSteps` | Will restart all steps that terminated due to an error. Only works when `--resume` is used | `false`
