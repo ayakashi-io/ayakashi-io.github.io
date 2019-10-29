@@ -107,7 +107,7 @@ await ayakashi.waitUntilExists("searchBox");
 await ayakashi.typeIn("searchBox", "some text to search");
 ```
 
-You can read about all of the builtin actions in the [reference](/reference/builtin-actions.html),
+You can read about all of the builtin actions in the [reference](/docs/reference/builtin-actions.html),
 as well as how to [create your own](/docs/advanced/creating-your-own-actions.html).
 
 ### preloaders

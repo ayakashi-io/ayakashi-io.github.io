@@ -57,7 +57,7 @@ return {
 ```
 
 If you need to return groups of multiple data sets please take a look
-in the [Grouping extracted data](http://localhost:4000/docs/guide/data-extraction.html#grouping-extracted-data) section.
+in the [Grouping extracted data](/docs/guide/data-extraction.html#grouping-extracted-data) section.
 
 ## printToConsole
 

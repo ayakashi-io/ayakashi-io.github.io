@@ -328,7 +328,7 @@ console.log(groupedData);
 `ayakashi.join()` will join all arrays together into groups based on their index.  
 If all of the array values are not of the same length an error will be thrown.  
 If a non-array value is used it will be copied to every group.  
-[trackMissingChildren()](http://localhost:4000/docs/guide/querying-with-domql.html#tracking-missing-children)
+[trackMissingChildren()](/docs/guide/querying-with-domql.html#tracking-missing-children)
 should be used in cases like these. It will ensure proper array lengths and correct ordering as long as a common
 parent prop is used.
 

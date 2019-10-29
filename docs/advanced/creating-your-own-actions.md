@@ -55,7 +55,7 @@ The boilerplate does the following:
 
 * gets a [reference](/docs/going_deeper/anonymous-props-and-references.html) to the prop we are passing with the `prop()` method
 * throws an error if the prop is not defined
-* it [triggers]((/docs/going_deeper/re-evaluating-props.html)) our prop, which evaluates its query to get its matches.
+* it [triggers](/docs/going_deeper/re-evaluating-props.html) our prop, which evaluates its query to get its matches.
 * throws an error if no matches were found by its query
 
 ## Creating a complete action
