@@ -1,8 +1,8 @@
 {
     "chromium": {
-        "revision": 706915
+        "revision": 722234
     },
     "ayakashi": {
-        "version": "1.0.0-beta7"
+        "version": "1.0.0-beta7.1"
     }
 }
