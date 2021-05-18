@@ -7,11 +7,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myCheckboxProp\").where({id: {eq: \"myCheckbox\"}});\nawait ayakashi.check(\"myCheckboxProp\");\n",
+                "text": "ayakashi.selectOne(\"myCheckboxProp\").where({\n    id: {\n        eq: \"myCheckbox\"\n    }\n});\nawait ayakashi.check(\"myCheckboxProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "clearInput",
@@ -25,11 +25,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myInput\").where({id: {eq: \"name\"}});\nawait ayakashi.clearInput(\"myInput\");\n",
+                "text": "ayakashi.selectOne(\"myInput\").where({\n    id: {\n        eq: \"name\"\n    }\n});\nawait ayakashi.clearInput(\"myInput\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, charCount?: undefined | number) => Promise<void>"
+        "signature": "(prop: string | IDomProp, charCount?: number) => Promise<void>"
     },
     {
         "name": "click",
@@ -39,11 +39,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.click(\"myButtonProp\");\n",
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({\n    class: {\n        eq: \"btn\"\n    }\n});\nawait ayakashi.click(\"myButtonProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "doubleClick",
@@ -53,11 +53,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.doubleClick(\"myButtonProp\");\n",
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({\n    class: {\n        eq: \"btn\"\n    }\n});\nawait ayakashi.doubleClick(\"myButtonProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "focus",
@@ -67,11 +67,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myInput\").where({id: {eq: \"email\"}});\nawait ayakashi.focus(\"myInput\");\n",
+                "text": "ayakashi.selectOne(\"myInput\").where({\n    id: {\n        eq: \"email\"\n    }\n});\nawait ayakashi.focus(\"myInput\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "getNodeId",
@@ -81,11 +81,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myButton\").where({class: {eq: \"btn\"}});\nawait ayakashi.getNodeId(\"myButton\");\n",
+                "text": "ayakashi.selectOne(\"myButton\").where({\n    class: {\n        eq: \"btn\"\n    }\n});\nawait ayakashi.getNodeId(\"myButton\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<number>"
+        "signature": "(prop: string | IDomProp) => Promise<number>"
     },
     {
         "name": "getPosition",
@@ -95,11 +95,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myButton\").where({class: {eq: \"btn\"}});\nawait ayakashi.getPosition(\"myButton\");\n",
+                "text": "ayakashi.selectOne(\"myButton\").where({\n    class: {\n        eq: \"btn\"\n    }\n});\nawait ayakashi.getPosition(\"myButton\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<{}>"
+        "signature": "(prop: string | IDomProp) => Promise<{}>"
     },
     {
         "name": "goTo",
@@ -121,11 +121,11 @@
                 "type": "text"
             },
             {
-                "text": "await ayakashi.goTo(\"https://ayakashi.io\");\n",
+                "text": "await ayakashi.goTo(\"https://ayakashi.io\");",
                 "type": "code"
             }
         ],
-        "signature": "(url: string, timeout?: undefined | number) => Promise<void>"
+        "signature": "(url: string, timeout?: number) => Promise<void>"
     },
     {
         "name": "hover",
@@ -135,11 +135,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"moreInfo\").where({id: {eq: \"info\"}});\nawait ayakashi.hover(\"moreInfo\");\n",
+                "text": "ayakashi.selectOne(\"moreInfo\").where({\n    id: {\n        eq: \"info\"\n    }\n});\nawait ayakashi.hover(\"moreInfo\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "infiniteScrollIn",
@@ -173,11 +173,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myInfiniteScrollableDiv\").where({class: {eq: \"scrollableList\"}});\nawait ayakashi.infiniteScrollIn(\"myInfiniteScrollableDiv\", {\ncb: function(currentHeight) {\nconsole.log(\"scrolling infinitely\");\nconsole.log(\"current height\", currentHeight);\n//let data flow in as we scroll\n}\n});\n",
+                "text": "ayakashi.selectOne(\"myInfiniteScrollableDiv\").where({\n    class: {\n        eq: \"scrollableList\"\n    }\n});\nawait ayakashi.infiniteScrollIn(\"myInfiniteScrollableDiv\", {\n    cb: function(currentHeight) {\n        console.log(\"scrolling infinitely\");\n        console.log(\"current height\", currentHeight);\n        //let data flow in as we scroll\n    }\n});",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, options?: undefined | undefined) => Promise<void>"
+        "signature": "(prop: string | IDomProp, options) => Promise<void>"
     },
     {
         "name": "navigationClick",
@@ -203,11 +203,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi\n.select(\"myLink\")\n.where({id: {eq: \"theLink\"}});\nawait ayakashi.navigationClick(\"myLink\");\n",
+                "text": "ayakashi\n    .select(\"myLink\")\n    .where({\n        id: {\n            eq: \"theLink\"\n        }\n    });\nawait ayakashi.navigationClick(\"myLink\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+        "signature": "(prop: string | IDomProp, timeout?: number) => Promise<void>"
     },
     {
         "name": "rightClick",
@@ -217,11 +217,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"menuOpener\").where({class: {eq: \"menu-trigger\"}});\nawait ayakashi.rightClick(\"menuOpener\");\n",
+                "text": "ayakashi.selectOne(\"menuOpener\").where({\n    class: {\n        eq: \"menu-trigger\"\n    }\n});\nawait ayakashi.rightClick(\"menuOpener\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "scrollIn",
@@ -243,11 +243,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myScrollableDiv\").where({class: {eq: \"scrollableList\"}});\nawait ayakashi.scrollIn(\"myScrollableDiv\");\n",
+                "text": "ayakashi.selectOne(\"myScrollableDiv\").where({\n    class: {\n        eq: \"scrollableList\"\n    }\n});\nawait ayakashi.scrollIn(\"myScrollableDiv\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, pixelsToScroll?: undefined | number) => Promise<number>"
+        "signature": "(prop: string | IDomProp, pixelsToScroll?: number) => Promise<number>"
     },
     {
         "name": "scrollInUntilBottomIsReached",
@@ -273,11 +273,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myDynamicScrollableDiv\").where({class: {eq: \"scrollableList\"}});\nawait ayakashi.scrollInUntilBottomIsReached(\"myDynamicScrollableDiv\");\n",
+                "text": "ayakashi.selectOne(\"myDynamicScrollableDiv\").where({\n    class: {\n        eq: \"scrollableList\"\n    }\n});\nawait ayakashi.scrollInUntilBottomIsReached(\"myDynamicScrollableDiv\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, scrollInterval?: undefined | number, timeout?: undefined | number) => Promise<void>"
+        "signature": "(prop: string | IDomProp, scrollInterval?: number, timeout?: number) => Promise<void>"
     },
     {
         "name": "scrollIntoView",
@@ -287,11 +287,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.scrollIntoView(\"myButtonProp\");\n",
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({\n    class: {\n        eq: \"btn\"\n    }\n});\nawait ayakashi.scrollIntoView(\"myButtonProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "spaNavigationClick",
@@ -321,11 +321,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi\n.select(\"inPageLink\")\n.where({id: {eq: \"theLink\"}});\nawait ayakashi.spaNavigationClick(\"inPageLink\");\n",
+                "text": "ayakashi\n    .select(\"inPageLink\")\n    .where({\n        id: {\n            eq: \"theLink\"\n        }\n    });\nawait ayakashi.spaNavigationClick(\"inPageLink\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+        "signature": "(prop: string | IDomProp, timeout?: number) => Promise<void>"
     },
     {
         "name": "tap",
@@ -335,11 +335,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myButtonProp\").where({class: {eq: \"btn\"}});\nawait ayakashi.tap(\"myButtonProp\");\n",
+                "text": "ayakashi.selectOne(\"myButtonProp\").where({\n    class: {\n        eq: \"btn\"\n    }\n});\nawait ayakashi.tap(\"myButtonProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "typeIn",
@@ -349,11 +349,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"searchBox\").where({id: {eq: \"search\"}});\nawait ayakashi.typeIn(\"searchBox\", \"web scraping and sanity\");\n",
+                "text": "ayakashi.selectOne(\"searchBox\").where({\n    id: {\n        eq: \"search\"\n    }\n});\nawait ayakashi.typeIn(\"searchBox\", \"web scraping and sanity\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, text: string) => Promise<void>"
+        "signature": "(prop: string | IDomProp, text: string) => Promise<void>"
     },
     {
         "name": "uncheck",
@@ -363,11 +363,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi.selectOne(\"myCheckboxProp\").where({id: {eq: \"myCheckbox\"}});\nawait ayakashi.uncheck(\"myCheckboxProp\");\n",
+                "text": "ayakashi.selectOne(\"myCheckboxProp\").where({\n    id: {\n        eq: \"myCheckbox\"\n    }\n});\nawait ayakashi.uncheck(\"myCheckboxProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string) => Promise<void>"
+        "signature": "(prop: string | IDomProp) => Promise<void>"
     },
     {
         "name": "wait",
@@ -377,11 +377,11 @@
                 "type": "text"
             },
             {
-                "text": "await ayakashi.wait(3000);\n",
+                "text": "await ayakashi.wait(3000);",
                 "type": "code"
             }
         ],
-        "signature": "(timeout?: undefined | number) => Promise<void>"
+        "signature": "(timeout?: number) => Promise<void>"
     },
     {
         "name": "waitForDomContentLoadedEvent",
@@ -395,7 +395,7 @@
                 "type": "text"
             }
         ],
-        "signature": "(timeout?: undefined | number) => Promise<void>"
+        "signature": "(timeout?: number) => Promise<void>"
     },
     {
         "name": "waitForInPageNavigation",
@@ -409,7 +409,7 @@
                 "type": "text"
             }
         ],
-        "signature": "(timeout?: undefined | number) => Promise<void>"
+        "signature": "(timeout?: number) => Promise<void>"
     },
     {
         "name": "waitForLoadEvent",
@@ -423,7 +423,7 @@
                 "type": "text"
             }
         ],
-        "signature": "(timeout?: undefined | number) => Promise<void>"
+        "signature": "(timeout?: number) => Promise<void>"
     },
     {
         "name": "waitUntil",
@@ -441,11 +441,11 @@
                 "type": "text"
             },
             {
-                "text": "await ayakashi.waitUntil(function() {\nreturn ayakashi.evaluate(function() {\n//check for something in the page\n});\n});\n",
+                "text": "await ayakashi.waitUntil(function() {\n    return ayakashi.evaluate(function() {\n        //check for something in the page\n    });\n});",
                 "type": "code"
             }
         ],
-        "signature": "(cb, interval?: undefined | number, timeout?: undefined | number) => Promise"
+        "signature": "(cb, interval?: number, timeout?: number) => Promise"
     },
     {
         "name": "waitUntilExists",
@@ -463,11 +463,11 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi\n.select(\"myProp\")\n.where({class: {eq: \"dynamicContainer\"}});\nawait ayakashi.waitUntilExists(\"myProp\");\n",
+                "text": "ayakashi\n    .select(\"myProp\")\n    .where({\n        class: {\n            eq: \"dynamicContainer\"\n        }\n    });\nawait ayakashi.waitUntilExists(\"myProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+        "signature": "(prop: string | IDomProp, timeout?: number) => Promise<void>"
     },
     {
         "name": "waitUntilVisible",
@@ -485,10 +485,10 @@
                 "type": "text"
             },
             {
-                "text": "ayakashi\n.select(\"myProp\")\n.where({class: {eq: \"dynamicContainer\"}});\nawait ayakashi.waitUntilVisible(\"myProp\");\n",
+                "text": "ayakashi\n    .select(\"myProp\")\n    .where({\n        class: {\n            eq: \"dynamicContainer\"\n        }\n    });\nawait ayakashi.waitUntilVisible(\"myProp\");",
                 "type": "code"
             }
         ],
-        "signature": "(prop: IDomProp | string, timeout?: undefined | number) => Promise<void>"
+        "signature": "(prop: string | IDomProp, timeout?: number) => Promise<void>"
     }
 ]
