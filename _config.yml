@@ -25,12 +25,14 @@ github_username:  ayakashi-io
 # Build settings
 markdown: kramdown
 remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
 plugins:
   - jekyll-sitemap
-  - "jekyll-github-metadata"
 # Enable or disable the site search
 search_enabled: true
-ga_tracking: UA-15935695-10
+aux_links:
+  "Ayakashi on GitHub":
+    - "//github.com/ayakashi-io/ayakashi"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -45,8 +47,6 @@ exclude:
   - vendor/ruby/
   - LICENSE
   - README.md
-include:
-  - _redirects
 
 github:
   source:
