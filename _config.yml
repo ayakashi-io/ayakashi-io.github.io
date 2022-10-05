@@ -24,7 +24,7 @@ github_username:  ayakashi-io
 
 # Build settings
 markdown: kramdown
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-sitemap
   - "jekyll-github-metadata"
