@@ -17,7 +17,7 @@ title: Ayakashi docs
 email: hello@ayakashi.io
 description: >- # this means to ignore newlines until "baseurl:"
   The next generation web scraping framework
-baseurl: "/docs" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ayakashi-io.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ayakashi_io
 github_username:  ayakashi-io
