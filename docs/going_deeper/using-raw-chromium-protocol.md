@@ -90,14 +90,22 @@ const URL = require("url").URL;
 * @param {import("@ayakashi/types").IAyakashiInstance} ayakashi
 */
 module.exports = async function(ayakashi) {
-    ayakashi.registerAction("trackDomainHeaders", async function(domain, headers) {
+    ayakashi.registerAction("trackDomainHeaders", async function(domain) {
+        const headers = [];
+
         const unsubscribe = ayakashi.__connection.client.Network.responseReceived(function(data) {
             const incomingUrl = new URL(data.response.url);
             if (incomingUrl.hostname.includes(domain)) {
                 headers.push(data.response.headers);
             }
         });
+        //clean up
         ayakashi.__connection.unsubscribers.push(unsubscribe);
+
+        //return a closure to read the headers after page load
+        return function readHeaders() {
+            return headers;
+        };
     });
 };
 ```
@@ -109,16 +117,15 @@ On our scraper:
 * @param {import("@ayakashi/types").IAyakashiInstance} ayakashi
 */
 module.exports = async function(ayakashi, input, params) {
-    //a reference to a headers array that we will pass to the action and read it afterwards
-    const headers = [];
-    //call our action
-    await ayakashi.trackDomainHeaders("some-domain.com", headers);
+    //run our action and get back a function we can call after page load to get the headers
+    const readHeaders = await ayakashi.trackDomainHeaders("some-domain.com");
     //load the page
     await ayakashi.goTo("https://some-domain.com");
-    //wait a bit so every resource gets loaded and we track every header
+    //wait a bit so async resources get loaded and we track every header
     await ayakashi.wait(5000);
 
-    //get what we need from the headers array
+    //get the headers and extract whatever we need
+    const headers = readHeaders();
     console.log(headers);
 };
 ```
