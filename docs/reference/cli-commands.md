@@ -20,7 +20,9 @@ Can be also viewed in your console by running `ayakashi --help` or by appending 
   * Examples
 * update-chrome
   * Examples
-* get-chrome
+* update-ua
+  * Examples
+* update-stealth
   * Examples
 * info
   * Examples
@@ -114,23 +116,41 @@ ayakashi new --preloader
 
 ## update-chrome
 
-Updates/Downloads the latest chromium revision.
+Downloads the recommended, latest or specified chromium revision
 
 ### Examples
 
 ```bash
+#downloads the recommended revision
 ayakashi update-chrome
+
+#downloads the latest available revision
+ayakashi update-chrome --latest
+
+#downloads a specific revision
+ayakashi update-chrome -r 1045629
 ```
 
-## get-chrome
+## update-ua
 
-Downloads the latest chromium revision if one is not already installed.
+Updates the builtin database of user agent strings
 
 ### Examples
 
 ```bash
-ayakashi get-chrome
+ayakashi update-ua
 ```
+
+## update-stealth
+
+Updates the headless chromium stealth patches
+
+### Examples
+
+```bash
+ayakashi update-stealth
+```
+
 ## info
 
 Show the installed Ayakashi version and chromium revision.

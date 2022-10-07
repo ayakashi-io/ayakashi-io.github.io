@@ -28,7 +28,7 @@ with navigation in normal and single page application (SPA) pages.
 To navigate to a page and wait until the `DOMContentLoaded` has been fired, use `goTo()`
 
 ```js
-await ayakashi.goTo("https://ayakashi.io");
+await ayakashi.goTo("https://ayakashi-io.github.io");
 ```
 
 You can also specify a larger timeout (in ms) if the page takes too long to load (default is 10s):
