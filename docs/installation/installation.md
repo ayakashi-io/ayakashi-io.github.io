@@ -14,6 +14,7 @@ permalink: /docs/installation
 * Installing
 * Updating
 * Using a @next version
+* Updating subcomponents
 * Installing missing Chromium dependencies on a Linux server
   * Option 1 - Install the missing dependencies
   * Option 2 - Install Chromium from your package manager
@@ -55,6 +56,16 @@ npm install -g ayakashi@next
 Beware that `@next` releases might be completely broken. Only use them if you need to test things out or need
 a feature/fix not yet available on `@latest`.  
 To see what changed since the last release, take a look at the [commit history](https://github.com/ayakashi-io/ayakashi/commits/master).
+
+## Updating subcomponents
+
+Ayakashi includes 3rd party components that can be updated individually.
+
+* `update-chrome` Updates the builtin chromium browser. See command options [here](/docs/reference/cli-commands.html#update-chrome)
+* `update-ua` Updates the builtin database of user agent strings
+* `update-stealth` Updates the headless chromium detection patches
+
+If you find yourself getting blocked by certain websites, try updating these components first.  
 
 ## Installing missing Chromium dependencies on a Linux server
 

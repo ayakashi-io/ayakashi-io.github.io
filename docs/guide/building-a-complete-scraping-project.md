@@ -38,6 +38,7 @@ We can generate a new project by running:
 ```bash
 ayakashi new githubComplete
 ```
+**Note**: The command will ask you if you want to generate a Javascript or Typescript project. All the guides use Javascript but you can select either and follow along just fine.
 
 The command will do the following:
 

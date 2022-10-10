@@ -50,6 +50,7 @@ Runs a project.
 | `--resume` | Resume execution of a previous unfinished run | `false`
 | `--restartDisabledSteps` | Will restart all steps that terminated due to an error. Only works when `--resume` is used | `false`
 | `--clean` | Clear the previous run if it exists and start from the beginning | `false`
+| `--skipTsBuild` | Skip automatic typescript compilation | `false`
 
 ### Examples
 
@@ -88,6 +89,8 @@ Generates a new `project|scraper|renderlessScraper|apiScraper|script|prop|action
 | Option | Description | Default |
 | --- | --- |
 | `dir` | Where to place the generated files | `.` (current directory)
+| `--ts` | Generate a typescript project | `false` (show prompt)
+| `--js` | Generate a javascript project | `false` (show prompt)
 
 ### Examples
 
@@ -98,6 +101,8 @@ ayakashi new
 ```bash
 ayakashi new ./existingFolder
 ```
+
+The command will ask you if you want to generate a Javascript or Typescript project. Pass `--ts` or `--js` to disable the prompt.
 
 ```bash
 ayakashi new --extractor --name=myExtractor
