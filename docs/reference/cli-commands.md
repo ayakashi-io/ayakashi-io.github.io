@@ -121,7 +121,7 @@ ayakashi new --preloader
 
 ## update-chrome
 
-Downloads the recommended, latest or specified chromium revision
+Downloads the recommended, latest or specified chrome revision
 
 ### Examples
 
@@ -129,11 +129,14 @@ Downloads the recommended, latest or specified chromium revision
 #downloads the recommended revision
 ayakashi update-chrome
 
-#downloads the latest available revision
-ayakashi update-chrome --latest
+#downloads the latest available revision from a specific chrome channel
+ayakashi update-chrome --stable
+ayakashi update-chrome --beta
+ayakashi update-chrome --dev
+ayakashi update-chrome --canary
 
 #downloads a specific revision
-ayakashi update-chrome -r 1045629
+ayakashi update-chrome -r "114.0.5735.133"
 ```
 
 ## update-ua
